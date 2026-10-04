@@ -1,0 +1,6 @@
+version: 3.0.3
+apkFileName: dummy.apk
+sdkInfo:
+  minSdkVersion: 25
+doNotCompress:
+- dex
