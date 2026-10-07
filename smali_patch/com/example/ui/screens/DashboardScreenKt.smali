@@ -28276,6 +28276,17 @@
     :cond_32
     check-cast v1, Ljava/util/List;
 
+    invoke-interface {v1}, Ljava/util/List;->isEmpty()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_curated_has_items
+
+    invoke-static/range {v51 .. v51}, Lcom/example/ui/screens/DashboardScreenKt;->DashboardScreen$lambda$23(Landroidx/compose/runtime/State;)Ljava/util/List;
+
+    move-result-object v1
+
+    :cond_curated_has_items
     check-cast v1, Ljava/lang/Iterable;
 
     const/4 v14, 0x6
@@ -31178,7 +31189,7 @@
 
     const v18, 0x30006c30
 
-    const/16 v19, 0x1e5
+    const/16 v19, 0x1f5
 
     move-object v9, v5
 
@@ -31202,7 +31213,7 @@
 
     move-object/from16 v8, v34
 
-    move-object/from16 v9, v35
+    const/4 v9, 0x0
 
     .line 611
     invoke-static/range {v5 .. v19}, Landroidx/compose/material3/ScaffoldKt;->Scaffold-TvnljyQ(Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;IJJLandroidx/compose/foundation/layout/WindowInsets;Lkotlin/jvm/functions/Function3;Landroidx/compose/runtime/Composer;II)V
