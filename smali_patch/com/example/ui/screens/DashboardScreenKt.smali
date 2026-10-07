@@ -2,6 +2,9 @@
 .super Ljava/lang/Object;
 .source "DashboardScreen.kt"
 
+# static fields
+.field public static cachedUserPhoto:Ljava/lang/String;
+
 
 # annotations
 .annotation system Ldalvik/annotation/SourceDebugExtension;
@@ -5244,6 +5247,15 @@
     :goto_19
     if-eqz p5, :cond_3f
 
+    invoke-virtual {v1}, Lcom/example/data/Book;->getOwnerProfilePicUrl()Ljava/lang/String;
+
+    move-result-object v6
+
+    if-eqz v6, :cond_set_you
+
+    sput-object v6, Lcom/example/ui/screens/DashboardScreenKt;->cachedUserPhoto:Ljava/lang/String;
+
+    :cond_set_you
     const-string v22, "You"
 
     :cond_3f
@@ -26828,6 +26840,8 @@
 
     move-object/from16 v1, p1
 
+    invoke-static {v0, v1}, Lcom/example/ui/screens/DashboardScreenKt;->extractOwnerPhoto(Ljava/util/List;Ljava/lang/String;)Ljava/lang/String;
+
     move-object/from16 v2, p2
 
     move-object/from16 v15, p3
@@ -39411,7 +39425,7 @@
     .line 648
     const-string v5, "http"
 
-    invoke-static {v0, v5, v4, v2, v1}, Lkotlin/text/StringsKt;->startsWith$default(Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Z
+    invoke-virtual {v0, v5}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
     move-result v5
 
@@ -58990,53 +59004,127 @@
 .end method
 
 .method public static getEffectiveProfilePic(Lcom/example/data/User;Ljava/lang/String;)Ljava/lang/String;
-    .registers 5
+    .registers 8
 
-    if-eqz p1, :cond_check_user
+    # 1. Check cachedUserPhoto
+    sget-object v0, Lcom/example/ui/screens/DashboardScreenKt;->cachedUserPhoto:Ljava/lang/String;
+    if-eqz v0, :cond_check_sp
 
-    invoke-virtual {p1}, Ljava/lang/String;->trim()Ljava/lang/String;
+    invoke-virtual {v0}, Ljava/lang/String;->trim()Ljava/lang/String;
     move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/String;->isEmpty()Z
-    move-result v0
+    move-result v1
 
-    if-nez v0, :cond_check_user
+    if-nez v1, :cond_check_sp
 
-    return-object p1
+    const-string v1, "ui-avatars"
+    invoke-virtual {v0, v1}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    move-result v1
 
-    :cond_check_user
-    if-eqz p0, :cond_check_firebase
+    if-nez v1, :cond_check_sp
 
-    invoke-virtual {p0}, Lcom/example/data/User;->getProfilePicBase64()Ljava/lang/String;
+    const-string v1, "BOOKX_CHECK"
+    const-string v2, "Returning cachedUserPhoto"
+    invoke-static {v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+    return-object v0
+
+    # 2. Check SharedPreferences profile_pic
+    :cond_check_sp
+    :try_start_sp_read
+    sget-object v0, Lcom/example/MainActivity;->appContext:Landroid/content/Context;
+    if-eqz v0, :cond_check_google_account
+
+    const-string v1, "book_borrow_prefs"
+    const/4 v2, 0x0
+    invoke-virtual {v0, v1, v2}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    move-result-object v0
+
+    if-eqz v0, :cond_check_google_account
+
+    const-string v1, "profile_pic"
+    const/4 v2, 0x0
+    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    move-result-object v0
+
+    if-eqz v0, :cond_check_google_account
+
+    invoke-virtual {v0}, Ljava/lang/String;->trim()Ljava/lang/String;
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/String;->isEmpty()Z
+    move-result v1
+
+    if-nez v1, :cond_check_google_account
+
+    const-string v1, "ui-avatars"
+    invoke-virtual {v0, v1}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    move-result v1
+
+    if-nez v1, :cond_check_google_account
+
+    sput-object v0, Lcom/example/ui/screens/DashboardScreenKt;->cachedUserPhoto:Ljava/lang/String;
+    const-string v1, "BOOKX_CHECK"
+    const-string v2, "Returning shared_prefs profile_pic"
+    invoke-static {v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+    return-object v0
+    :try_end_sp_read
+    .catch Ljava/lang/Throwable; {:try_start_sp_read .. :try_end_sp_read} :catch_sp_read
+
+    :catch_sp_read
+
+    # 3. Check GoogleSignInAccount photoUrl
+    :cond_check_google_account
+    :try_start_g
+    sget-object v0, Lcom/example/MainActivity;->appContext:Landroid/content/Context;
+    if-eqz v0, :cond_check_firebase
+
+    invoke-static {v0}, Lcom/google/android/gms/auth/api/signin/GoogleSignIn;->getLastSignedInAccount(Landroid/content/Context;)Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
+    move-result-object v0
+
+    if-eqz v0, :cond_check_firebase
+
+    invoke-virtual {v0}, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->getPhotoUrl()Landroid/net/Uri;
+    move-result-object v0
+
+    if-eqz v0, :cond_check_firebase
+
+    invoke-virtual {v0}, Landroid/net/Uri;->toString()Ljava/lang/String;
     move-result-object v0
 
     if-eqz v0, :cond_check_firebase
 
     invoke-virtual {v0}, Ljava/lang/String;->trim()Ljava/lang/String;
-    move-result-object v1
+    move-result-object v0
 
-    invoke-virtual {v1}, Ljava/lang/String;->isEmpty()Z
+    invoke-virtual {v0}, Ljava/lang/String;->isEmpty()Z
     move-result v1
 
     if-nez v1, :cond_check_firebase
 
+    sput-object v0, Lcom/example/ui/screens/DashboardScreenKt;->cachedUserPhoto:Ljava/lang/String;
+    const-string v1, "BOOKX_CHECK"
+    const-string v2, "Returning GoogleSignInAccount photoUrl"
+    invoke-static {v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
     return-object v0
+    :try_end_g
+    .catch Ljava/lang/Throwable; {:try_start_g .. :try_end_g} :catch_g
 
+    :catch_g
+
+    # 4. Check FirebaseUser photoUrl
     :cond_check_firebase
     :try_start_fb
     invoke-static {}, Lcom/google/firebase/auth/FirebaseAuth;->getInstance()Lcom/google/firebase/auth/FirebaseAuth;
     move-result-object v0
 
-    if-eqz v0, :cond_ret_null
+    if-eqz v0, :cond_check_arg_pic
 
     invoke-virtual {v0}, Lcom/google/firebase/auth/FirebaseAuth;->getCurrentUser()Lcom/google/firebase/auth/FirebaseUser;
     move-result-object v0
 
-    if-nez v0, :cond_get_photo
+    if-eqz v0, :cond_check_arg_pic
 
-    goto :cond_ret_null
-
-    :cond_get_photo
     invoke-virtual {v0}, Lcom/google/firebase/auth/FirebaseUser;->getPhotoUrl()Landroid/net/Uri;
     move-result-object v1
 
@@ -59048,62 +59136,264 @@
     if-eqz v1, :cond_check_provider
 
     invoke-virtual {v1}, Ljava/lang/String;->trim()Ljava/lang/String;
-    move-result-object v2
+    move-result-object v1
 
-    invoke-virtual {v2}, Ljava/lang/String;->isEmpty()Z
+    invoke-virtual {v1}, Ljava/lang/String;->isEmpty()Z
     move-result v2
 
     if-nez v2, :cond_check_provider
 
+    sput-object v1, Lcom/example/ui/screens/DashboardScreenKt;->cachedUserPhoto:Ljava/lang/String;
     return-object v1
 
     :cond_check_provider
     invoke-virtual {v0}, Lcom/google/firebase/auth/FirebaseUser;->getProviderData()Ljava/util/List;
     move-result-object v0
-
-    if-eqz v0, :cond_ret_null
-
+    if-eqz v0, :cond_check_arg_pic
     invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
     move-result-object v0
-
     :cond_loop_provider
     invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
     move-result v1
-
-    if-eqz v1, :cond_ret_null
-
+    if-eqz v1, :cond_check_arg_pic
     invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
     move-result-object v1
-
     check-cast v1, Lcom/google/firebase/auth/UserInfo;
-
     if-eqz v1, :cond_loop_provider
-
     invoke-interface {v1}, Lcom/google/firebase/auth/UserInfo;->getPhotoUrl()Landroid/net/Uri;
     move-result-object v1
-
     if-eqz v1, :cond_loop_provider
-
     invoke-virtual {v1}, Landroid/net/Uri;->toString()Ljava/lang/String;
     move-result-object v1
-
     if-eqz v1, :cond_loop_provider
-
     invoke-virtual {v1}, Ljava/lang/String;->trim()Ljava/lang/String;
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/String;->isEmpty()Z
+    move-result-object v1
+    invoke-virtual {v1}, Ljava/lang/String;->isEmpty()Z
     move-result v2
-
     if-nez v2, :cond_loop_provider
-
+    sput-object v1, Lcom/example/ui/screens/DashboardScreenKt;->cachedUserPhoto:Ljava/lang/String;
     return-object v1
     :try_end_fb
     .catch Ljava/lang/Throwable; {:try_start_fb .. :try_end_fb} :catch_fb
 
     :catch_fb
-    :cond_ret_null
-    const/4 v0, 0x0
 
+    # 5. Check p1 (arg currentPic) if not ui-avatars
+    :cond_check_arg_pic
+    if-eqz p1, :cond_check_user
+
+    invoke-virtual {p1}, Ljava/lang/String;->trim()Ljava/lang/String;
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/String;->isEmpty()Z
+    move-result v1
+
+    if-nez v1, :cond_check_user
+
+    const-string v1, "ui-avatars"
+    invoke-virtual {v0, v1}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    move-result v1
+
+    if-nez v1, :cond_check_user
+
+    return-object v0
+
+    # 6. Check p0 (User.profilePicBase64)
+    :cond_check_user
+    if-eqz p0, :cond_check_user_name
+
+    invoke-virtual {p0}, Lcom/example/data/User;->getProfilePicBase64()Ljava/lang/String;
+    move-result-object v0
+
+    if-eqz v0, :cond_check_user_name
+
+    invoke-virtual {v0}, Ljava/lang/String;->trim()Ljava/lang/String;
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/String;->isEmpty()Z
+    move-result v1
+
+    if-nez v1, :cond_check_user_name
+
+    return-object v0
+
+    # 7. Fallback to ui-avatars.com
+    :cond_check_user_name
+    if-eqz p0, :cond_final_null
+
+    invoke-virtual {p0}, Lcom/example/data/User;->getDisplayName()Ljava/lang/String;
+    move-result-object v0
+    if-eqz v0, :cond_try_uname
+
+    invoke-virtual {v0}, Ljava/lang/String;->trim()Ljava/lang/String;
+    move-result-object v1
+    invoke-virtual {v1}, Ljava/lang/String;->isEmpty()Z
+    move-result v1
+    if-nez v1, :cond_try_uname
+    goto :cond_build_avatar
+
+    :cond_try_uname
+    invoke-virtual {p0}, Lcom/example/data/User;->getUsername()Ljava/lang/String;
+    move-result-object v0
+    if-eqz v0, :cond_final_null
+
+    invoke-virtual {v0}, Ljava/lang/String;->trim()Ljava/lang/String;
+    move-result-object v1
+    invoke-virtual {v1}, Ljava/lang/String;->isEmpty()Z
+    move-result v1
+    if-nez v1, :cond_final_null
+
+    :cond_build_avatar
+    new-instance v1, Ljava/lang/StringBuilder;
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+    const-string v2, "https://ui-avatars.com/api/?name="
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, "&background=1976D2&color=fff&size=128&bold=true"
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v0
+    return-object v0
+
+    :cond_final_null
+    const/4 v0, 0x0
+    return-object v0
+.end method
+
+.method public static extractOwnerPhoto(Ljava/util/List;Ljava/lang/String;)Ljava/lang/String;
+    .registers 6
+
+    if-nez p0, :cond_check_books
+    goto :cond_check_fallback_acc
+
+    :cond_check_books
+    invoke-interface {p0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+    move-result-object p0
+
+    :cond_loop
+    invoke-interface {p0}, Ljava/util/Iterator;->hasNext()Z
+    move-result v0
+    if-eqz v0, :cond_check_fallback_acc
+
+    invoke-interface {p0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    move-result-object v0
+    check-cast v0, Lcom/example/data/Book;
+
+    if-eqz v0, :cond_loop
+
+    invoke-static {v0, p1}, Lcom/example/ui/screens/DashboardScreenKt;->isBookOwner(Lcom/example/data/Book;Ljava/lang/String;)Z
+    move-result v1
+    if-nez v1, :cond_is_owner
+
+    invoke-virtual {v0}, Lcom/example/data/Book;->getOwnerName()Ljava/lang/String;
+    move-result-object v1
+    if-eqz v1, :cond_loop
+    const-string v2, "you"
+    invoke-virtual {v1, v2}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+    move-result v1
+    if-nez v1, :cond_is_owner
+    goto :cond_loop
+
+    :cond_is_owner
+    invoke-virtual {v0}, Lcom/example/data/Book;->getOwnerProfilePicUrl()Ljava/lang/String;
+    move-result-object v0
+
+    if-eqz v0, :cond_loop
+
+    invoke-virtual {v0}, Ljava/lang/String;->trim()Ljava/lang/String;
+    move-result-object v0
+    invoke-virtual {v0}, Ljava/lang/String;->isEmpty()Z
+    move-result v1
+    if-nez v1, :cond_loop
+
+    const-string v1, "ui-avatars"
+    invoke-virtual {v0, v1}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    move-result v1
+    if-nez v1, :cond_loop
+
+    const-string v1, "BOOKX_CHECK"
+    new-instance v2, Ljava/lang/StringBuilder;
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+    const-string v3, "extractOwnerPhoto found user photo: "
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v2
+    invoke-static {v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+
+    sput-object v0, Lcom/example/ui/screens/DashboardScreenKt;->cachedUserPhoto:Ljava/lang/String;
+
+    :try_start_sp
+    sget-object v1, Lcom/example/MainActivity;->appContext:Landroid/content/Context;
+    if-eqz v1, :cond_end_sp
+    const-string v2, "book_borrow_prefs"
+    const/4 v3, 0x0
+    invoke-virtual {v1, v2, v3}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    move-result-object v1
+    if-eqz v1, :cond_end_sp
+    invoke-interface {v1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+    move-result-object v1
+    const-string v2, "profile_pic"
+    invoke-interface {v1, v2, v0}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+    move-result-object v1
+    invoke-interface {v1}, Landroid/content/SharedPreferences$Editor;->apply()V
+    :try_end_sp
+    .catch Ljava/lang/Throwable; {:try_start_sp .. :try_end_sp} :catch_sp
+
+    :catch_sp
+    :cond_end_sp
+    return-object v0
+
+    :cond_check_fallback_acc
+    :try_start_g_extract
+    sget-object v1, Lcom/example/MainActivity;->appContext:Landroid/content/Context;
+    if-eqz v1, :cond_check_fb_extract
+    invoke-static {v1}, Lcom/google/android/gms/auth/api/signin/GoogleSignIn;->getLastSignedInAccount(Landroid/content/Context;)Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
+    move-result-object v1
+    if-eqz v1, :cond_check_fb_extract
+    invoke-virtual {v1}, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->getPhotoUrl()Landroid/net/Uri;
+    move-result-object v1
+    if-eqz v1, :cond_check_fb_extract
+    invoke-virtual {v1}, Landroid/net/Uri;->toString()Ljava/lang/String;
+    move-result-object v0
+    if-eqz v0, :cond_check_fb_extract
+    invoke-virtual {v0}, Ljava/lang/String;->trim()Ljava/lang/String;
+    move-result-object v0
+    invoke-virtual {v0}, Ljava/lang/String;->isEmpty()Z
+    move-result v1
+    if-nez v1, :cond_check_fb_extract
+    sput-object v0, Lcom/example/ui/screens/DashboardScreenKt;->cachedUserPhoto:Ljava/lang/String;
+    return-object v0
+    :try_end_g_extract
+    .catch Ljava/lang/Throwable; {:try_start_g_extract .. :try_end_g_extract} :catch_g_extract
+
+    :catch_g_extract
+    :cond_check_fb_extract
+    :try_start_fb_extract
+    invoke-static {}, Lcom/google/firebase/auth/FirebaseAuth;->getInstance()Lcom/google/firebase/auth/FirebaseAuth;
+    move-result-object v1
+    if-eqz v1, :cond_null
+    invoke-virtual {v1}, Lcom/google/firebase/auth/FirebaseAuth;->getCurrentUser()Lcom/google/firebase/auth/FirebaseUser;
+    move-result-object v1
+    if-eqz v1, :cond_null
+    invoke-virtual {v1}, Lcom/google/firebase/auth/FirebaseUser;->getPhotoUrl()Landroid/net/Uri;
+    move-result-object v1
+    if-eqz v1, :cond_null
+    invoke-virtual {v1}, Landroid/net/Uri;->toString()Ljava/lang/String;
+    move-result-object v0
+    if-eqz v0, :cond_null
+    invoke-virtual {v0}, Ljava/lang/String;->trim()Ljava/lang/String;
+    move-result-object v0
+    invoke-virtual {v0}, Ljava/lang/String;->isEmpty()Z
+    move-result v1
+    if-nez v1, :cond_null
+    sput-object v0, Lcom/example/ui/screens/DashboardScreenKt;->cachedUserPhoto:Ljava/lang/String;
+    return-object v0
+    :try_end_fb_extract
+    .catch Ljava/lang/Throwable; {:try_start_fb_extract .. :try_end_fb_extract} :catch_fb_extract
+
+    :catch_fb_extract
+    :cond_null
+    const/4 v0, 0x0
     return-object v0
 .end method

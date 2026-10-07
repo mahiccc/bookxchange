@@ -49,6 +49,8 @@
 # static fields
 .field public static final $stable:I = 0x8
 
+.field public static appContext:Landroid/content/Context;
+
 
 # instance fields
 .field private final requestPermissionLauncher:Landroidx/activity/result/ActivityResultLauncher;
@@ -871,6 +873,8 @@
     move-object v0, p0
 
     check-cast v0, Landroid/content/Context;
+
+    sput-object v0, Lcom/example/MainActivity;->appContext:Landroid/content/Context;
 
     invoke-virtual {p1, v0}, Lcom/example/ui/NotificationHelper;->createNotificationChannel(Landroid/content/Context;)V
 

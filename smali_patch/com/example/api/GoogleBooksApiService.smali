@@ -54,10 +54,15 @@
 
     if-eqz p5, :cond_1
 
-    const/4 p3, 0x0
+    const-string p3, "AIzaSyAZD_kVcs-wF18nA0hTL4UHfK7hMeOyQ_k"
 
     .line 84
     :cond_1
+    if-nez p3, :cond_has_key
+
+    const-string p3, "AIzaSyAZD_kVcs-wF18nA0hTL4UHfK7hMeOyQ_k"
+
+    :cond_has_key
     invoke-interface {p0, p1, p2, p3, p4}, Lcom/example/api/GoogleBooksApiService;->searchBooks(Ljava/lang/String;ILjava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 
     move-result-object p0

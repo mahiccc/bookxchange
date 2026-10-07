@@ -11625,6 +11625,8 @@
 
     invoke-static {v1, v6}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
 
+    invoke-static {v0, v1}, Lcom/example/ui/screens/DashboardScreenKt;->extractOwnerPhoto(Ljava/util/List;Ljava/lang/String;)Ljava/lang/String;
+
     const-string v6, "viewModel"
 
     invoke-static {v3, v6}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
@@ -27610,7 +27612,7 @@
     .line 610
     const-string v5, "http"
 
-    invoke-static {v1, v5, v8, v2, v4}, Lkotlin/text/StringsKt;->startsWith$default(Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Z
+    invoke-virtual {v1, v5}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
     move-result v5
 
