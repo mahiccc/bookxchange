@@ -657,56 +657,13 @@
     .line 90
     const-string v4, ""
 
-    if-eqz v7, :cond_17
-
-    invoke-virtual {v7}, Lcom/example/data/Book;->getOwnerName()Ljava/lang/String;
-
-    move-result-object v8
-
-    check-cast v8, Ljava/lang/CharSequence;
-
-    invoke-static {v8}, Lkotlin/text/StringsKt;->trim(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
-
-    move-result-object v8
-
-    invoke-virtual {v8}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
-    move-result-object v8
-
     invoke-static {v6}, Lcom/example/ui/screens/ChatScreenKt;->ChatScreen$lambda$13(Landroidx/compose/runtime/State;)Ljava/lang/String;
 
-    move-result-object v9
+    move-result-object v8
 
-    if-eqz v9, :cond_15
+    invoke-static {v7, v8}, Lcom/example/ui/screens/DashboardScreenKt;->isBookOwner(Lcom/example/data/Book;Ljava/lang/String;)Z
 
-    check-cast v9, Ljava/lang/CharSequence;
-
-    invoke-static {v9}, Lkotlin/text/StringsKt;->trim(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
-
-    move-result-object v9
-
-    invoke-virtual {v9}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
-    move-result-object v9
-
-    if-nez v9, :cond_16
-
-    :cond_15
-    move-object v9, v4
-
-    :cond_16
-    invoke-static {v8, v9, v15}, Lkotlin/text/StringsKt;->equals(Ljava/lang/String;Ljava/lang/String;Z)Z
-
-    move-result v8
-
-    if-eqz v8, :cond_17
-
-    move/from16 v39, v15
-
-    goto :goto_8
-
-    :cond_17
-    move/from16 v39, v14
+    move-result v39
 
     :goto_8
     const v8, -0x4ba138d0
@@ -11840,8 +11797,7 @@
 
     const/4 v4, 0x0
 
-    invoke-static/range {v0 .. v8}, Landroidx/compose/material3/IconButtonKt;->IconButton(Lkotlin/jvm/functions/Function0;Landroidx/compose/ui/Modifier;ZLandroidx/compose/material3/IconButtonColors;Landroidx/compose/foundation/interaction/MutableInteractionSource;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;II)V
-
+    # Omitted redundant book cover thumbnail IconButton to preserve contact name space
     goto :goto_1
 
     :cond_7
@@ -13147,10 +13103,7 @@
 
     move-result-object v10
 
-    .line 773
-    invoke-static {v10}, Landroidx/compose/foundation/layout/WindowInsetsPadding_androidKt;->imePadding(Landroidx/compose/ui/Modifier;)Landroidx/compose/ui/Modifier;
-
-    move-result-object v17
+    move-object/from16 v17, v10
 
     const/16 v21, 0x2
 
@@ -16934,11 +16887,6 @@
 
     .line 1613
     invoke-static {v0}, Landroidx/compose/foundation/layout/WindowInsetsPadding_androidKt;->navigationBarsPadding(Landroidx/compose/ui/Modifier;)Landroidx/compose/ui/Modifier;
-
-    move-result-object v0
-
-    .line 1614
-    invoke-static {v0}, Landroidx/compose/foundation/layout/WindowInsetsPadding_androidKt;->imePadding(Landroidx/compose/ui/Modifier;)Landroidx/compose/ui/Modifier;
 
     move-result-object v14
 

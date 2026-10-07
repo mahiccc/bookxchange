@@ -772,6 +772,32 @@
     invoke-static {v3, v6}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 182
+    const-string v6, "shiva"
+
+    invoke-virtual {v3, v6}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
+    move-result v6
+
+    if-eqz v6, :cond_check_sumukesh_repo
+
+    const-string v6, "sumukesh.ccc@gmail.com"
+
+    goto :goto_alias_done
+
+    :cond_check_sumukesh_repo
+    const-string v6, "sumukesh"
+
+    invoke-virtual {v3, v6}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
+    move-result v6
+
+    if-eqz v6, :cond_default_alias_repo
+
+    const-string v6, "chindhulurushivasumukesh@gmail.com"
+
+    goto :goto_alias_done
+
+    :cond_default_alias_repo
     iget-object v6, v0, Lcom/example/data/BookRepository$getMessagesForUser$1;->$username:Ljava/lang/String;
 
     check-cast v6, Ljava/lang/CharSequence;
@@ -783,6 +809,8 @@
     invoke-virtual {v6}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
     move-result-object v6
+
+    :goto_alias_done
 
     .line 183
     new-instance v7, Ljava/util/concurrent/ConcurrentHashMap;

@@ -27594,25 +27594,11 @@
     .line 608
     invoke-static {v10, v1, v2}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerStart(Landroidx/compose/runtime/Composer;ILjava/lang/String;)V
 
-    if-eqz p3, :cond_11
+    move-object/from16 v1, p0
 
-    .line 609
-    move-object/from16 v1, p3
+    move-object/from16 v2, p3
 
-    check-cast v1, Ljava/lang/CharSequence;
-
-    invoke-static {v1}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
-
-    move-result v1
-
-    if-nez v1, :cond_11
-
-    move-object/from16 v1, p3
-
-    goto :goto_4
-
-    :cond_11
-    invoke-virtual/range {p0 .. p0}, Lcom/example/data/User;->getProfilePicBase64()Ljava/lang/String;
+    invoke-static {v1, v2}, Lcom/example/ui/screens/DashboardScreenKt;->getEffectiveProfilePic(Lcom/example/data/User;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 

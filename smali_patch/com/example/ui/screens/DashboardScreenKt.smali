@@ -39391,38 +39391,15 @@
 
     move-result-object v0
 
-    const/4 v1, 0x0
-
-    if-eqz v0, :cond_3
-
-    .line 647
-    move-object v3, v0
-
-    check-cast v3, Ljava/lang/CharSequence;
-
-    invoke-static {v3}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
-
-    move-result v3
-
-    if-nez v3, :cond_3
-
-    goto :goto_1
-
-    :cond_3
     invoke-static/range {p1 .. p1}, Lcom/example/ui/screens/DashboardScreenKt;->DashboardScreen$lambda$5(Landroidx/compose/runtime/State;)Lcom/example/data/User;
 
-    move-result-object v0
+    move-result-object v1
 
-    if-eqz v0, :cond_4
-
-    invoke-virtual {v0}, Lcom/example/data/User;->getProfilePicBase64()Ljava/lang/String;
+    invoke-static {v1, v0}, Lcom/example/ui/screens/DashboardScreenKt;->getEffectiveProfilePic(Lcom/example/data/User;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    goto :goto_1
-
-    :cond_4
-    move-object v0, v1
+    const/4 v1, 0x0
 
     :goto_1
     const/high16 v3, 0x42100000    # 36.0f
@@ -40003,141 +39980,8 @@
 .end method
 
 .method static final DashboardScreen$lambda$187(Landroidx/compose/runtime/MutableState;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
-    .locals 13
+    .locals 1
 
-    const-string v0, "C678@34257L30,679@34336L11,677@34209L307:DashboardScreen.kt#2thlc2"
-
-    invoke-static {p1, v0}, Landroidx/compose/runtime/ComposerKt;->sourceInformation(Landroidx/compose/runtime/Composer;Ljava/lang/String;)V
-
-    and-int/lit8 v0, p2, 0x3
-
-    const/4 v1, 0x2
-
-    if-ne v0, v1, :cond_1
-
-    invoke-interface {p1}, Landroidx/compose/runtime/Composer;->getSkipping()Z
-
-    move-result v0
-
-    if-nez v0, :cond_0
-
-    goto :goto_0
-
-    .line 677
-    :cond_0
-    invoke-interface {p1}, Landroidx/compose/runtime/Composer;->skipToGroupEnd()V
-
-    goto :goto_1
-
-    .line 0
-    :cond_1
-    :goto_0
-    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_2
-
-    const/4 v0, -0x1
-
-    const-string v1, "com.example.ui.screens.DashboardScreen.<anonymous> (DashboardScreen.kt:677)"
-
-    const v2, -0x1899bf76
-
-    invoke-static {v2, p2, v0, v1}, Landroidx/compose/runtime/ComposerKt;->traceEventStart(IIILjava/lang/String;)V
-
-    :cond_2
-    const p2, -0x5927b218
-
-    const-string v0, "CC(remember):DashboardScreen.kt#9igjgp"
-
-    .line 679
-    invoke-static {p1, p2, v0}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerStart(Landroidx/compose/runtime/Composer;ILjava/lang/String;)V
-
-    .line 3893
-    invoke-interface {p1}, Landroidx/compose/runtime/Composer;->rememberedValue()Ljava/lang/Object;
-
-    move-result-object p2
-
-    .line 3894
-    sget-object v0, Landroidx/compose/runtime/Composer;->Companion:Landroidx/compose/runtime/Composer$Companion;
-
-    invoke-virtual {v0}, Landroidx/compose/runtime/Composer$Companion;->getEmpty()Ljava/lang/Object;
-
-    move-result-object v0
-
-    if-ne p2, v0, :cond_3
-
-    .line 679
-    new-instance p2, Lcom/example/ui/screens/DashboardScreenKt$$ExternalSyntheticLambda76;
-
-    invoke-direct {p2, p0}, Lcom/example/ui/screens/DashboardScreenKt$$ExternalSyntheticLambda76;-><init>(Landroidx/compose/runtime/MutableState;)V
-
-    .line 3896
-    invoke-interface {p1, p2}, Landroidx/compose/runtime/Composer;->updateRememberedValue(Ljava/lang/Object;)V
-
-    .line 679
-    :cond_3
-    move-object v0, p2
-
-    check-cast v0, Lkotlin/jvm/functions/Function0;
-
-    invoke-static {p1}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerEnd(Landroidx/compose/runtime/Composer;)V
-
-    .line 680
-    sget-object p0, Landroidx/compose/material3/MaterialTheme;->INSTANCE:Landroidx/compose/material3/MaterialTheme;
-
-    sget p2, Landroidx/compose/material3/MaterialTheme;->$stable:I
-
-    invoke-virtual {p0, p1, p2}, Landroidx/compose/material3/MaterialTheme;->getColorScheme(Landroidx/compose/runtime/Composer;I)Landroidx/compose/material3/ColorScheme;
-
-    move-result-object p0
-
-    invoke-virtual {p0}, Landroidx/compose/material3/ColorScheme;->getPrimary-0d7_KjU()J
-
-    move-result-wide v3
-
-    .line 681
-    sget-object p0, Landroidx/compose/ui/graphics/Color;->Companion:Landroidx/compose/ui/graphics/Color$Companion;
-
-    invoke-virtual {p0}, Landroidx/compose/ui/graphics/Color$Companion;->getWhite-0d7_KjU()J
-
-    move-result-wide v5
-
-    sget-object p0, Lcom/example/ui/screens/ComposableSingletons$DashboardScreenKt;->INSTANCE:Lcom/example/ui/screens/ComposableSingletons$DashboardScreenKt;
-
-    invoke-virtual {p0}, Lcom/example/ui/screens/ComposableSingletons$DashboardScreenKt;->getLambda$-557896308$app()Lkotlin/jvm/functions/Function2;
-
-    move-result-object v9
-
-    const v11, 0xc06006
-
-    const/16 v12, 0x66
-
-    const/4 v1, 0x0
-
-    const/4 v2, 0x0
-
-    const/4 v7, 0x0
-
-    const/4 v8, 0x0
-
-    move-object v10, p1
-
-    .line 678
-    invoke-static/range {v0 .. v12}, Landroidx/compose/material3/FloatingActionButtonKt;->FloatingActionButton-X-z6DiA(Lkotlin/jvm/functions/Function0;Landroidx/compose/ui/Modifier;Landroidx/compose/ui/graphics/Shape;JJLandroidx/compose/material3/FloatingActionButtonElevation;Landroidx/compose/foundation/interaction/MutableInteractionSource;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;II)V
-
-    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
-
-    move-result p0
-
-    if-eqz p0, :cond_4
-
-    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->traceEventEnd()V
-
-    .line 685
-    :cond_4
-    :goto_1
     sget-object p0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
 
     return-object p0
@@ -59143,4 +58987,123 @@
     invoke-static {p0, p1}, Lcom/example/ui/screens/DashboardScreenKt;->isUserMatch(Ljava/lang/String;Ljava/lang/String;)Z
     move-result p0
     return p0
+.end method
+
+.method public static getEffectiveProfilePic(Lcom/example/data/User;Ljava/lang/String;)Ljava/lang/String;
+    .registers 5
+
+    if-eqz p1, :cond_check_user
+
+    invoke-virtual {p1}, Ljava/lang/String;->trim()Ljava/lang/String;
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/String;->isEmpty()Z
+    move-result v0
+
+    if-nez v0, :cond_check_user
+
+    return-object p1
+
+    :cond_check_user
+    if-eqz p0, :cond_check_firebase
+
+    invoke-virtual {p0}, Lcom/example/data/User;->getProfilePicBase64()Ljava/lang/String;
+    move-result-object v0
+
+    if-eqz v0, :cond_check_firebase
+
+    invoke-virtual {v0}, Ljava/lang/String;->trim()Ljava/lang/String;
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/String;->isEmpty()Z
+    move-result v1
+
+    if-nez v1, :cond_check_firebase
+
+    return-object v0
+
+    :cond_check_firebase
+    :try_start_fb
+    invoke-static {}, Lcom/google/firebase/auth/FirebaseAuth;->getInstance()Lcom/google/firebase/auth/FirebaseAuth;
+    move-result-object v0
+
+    if-eqz v0, :cond_ret_null
+
+    invoke-virtual {v0}, Lcom/google/firebase/auth/FirebaseAuth;->getCurrentUser()Lcom/google/firebase/auth/FirebaseUser;
+    move-result-object v0
+
+    if-nez v0, :cond_get_photo
+
+    goto :cond_ret_null
+
+    :cond_get_photo
+    invoke-virtual {v0}, Lcom/google/firebase/auth/FirebaseUser;->getPhotoUrl()Landroid/net/Uri;
+    move-result-object v1
+
+    if-eqz v1, :cond_check_provider
+
+    invoke-virtual {v1}, Landroid/net/Uri;->toString()Ljava/lang/String;
+    move-result-object v1
+
+    if-eqz v1, :cond_check_provider
+
+    invoke-virtual {v1}, Ljava/lang/String;->trim()Ljava/lang/String;
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/String;->isEmpty()Z
+    move-result v2
+
+    if-nez v2, :cond_check_provider
+
+    return-object v1
+
+    :cond_check_provider
+    invoke-virtual {v0}, Lcom/google/firebase/auth/FirebaseUser;->getProviderData()Ljava/util/List;
+    move-result-object v0
+
+    if-eqz v0, :cond_ret_null
+
+    invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+    move-result-object v0
+
+    :cond_loop_provider
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+    move-result v1
+
+    if-eqz v1, :cond_ret_null
+
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    move-result-object v1
+
+    check-cast v1, Lcom/google/firebase/auth/UserInfo;
+
+    if-eqz v1, :cond_loop_provider
+
+    invoke-interface {v1}, Lcom/google/firebase/auth/UserInfo;->getPhotoUrl()Landroid/net/Uri;
+    move-result-object v1
+
+    if-eqz v1, :cond_loop_provider
+
+    invoke-virtual {v1}, Landroid/net/Uri;->toString()Ljava/lang/String;
+    move-result-object v1
+
+    if-eqz v1, :cond_loop_provider
+
+    invoke-virtual {v1}, Ljava/lang/String;->trim()Ljava/lang/String;
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/String;->isEmpty()Z
+    move-result v2
+
+    if-nez v2, :cond_loop_provider
+
+    return-object v1
+    :try_end_fb
+    .catch Ljava/lang/Throwable; {:try_start_fb .. :try_end_fb} :catch_fb
+
+    :catch_fb
+    :cond_ret_null
+    const/4 v0, 0x0
+
+    return-object v0
 .end method

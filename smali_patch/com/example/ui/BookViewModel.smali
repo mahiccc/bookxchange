@@ -761,57 +761,16 @@
     .line 65
     :cond_5
     :goto_3
-    invoke-virtual {v12}, Lcom/google/firebase/auth/FirebaseUser;->getPhotoUrl()Landroid/net/Uri;
+    const/4 v1, 0x0
+
+    invoke-static {v1, v1}, Lcom/example/ui/screens/DashboardScreenKt;->getEffectiveProfilePic(Lcom/example/data/User;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
-    if-eqz v1, :cond_6
+    if-eqz v1, :cond_9
 
-    invoke-virtual {v1}, Landroid/net/Uri;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    goto :goto_4
-
-    :cond_6
-    move-object v1, v4
-
-    .line 66
-    :goto_4
-    move-object v2, v1
-
-    check-cast v2, Ljava/lang/CharSequence;
-
-    if-eqz v2, :cond_9
-
-    invoke-static {v2}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_7
-
-    goto :goto_5
-
-    :cond_7
-    invoke-interface {v9}, Lkotlinx/coroutines/flow/MutableStateFlow;->getValue()Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/lang/CharSequence;
-
-    if-eqz v2, :cond_8
-
-    invoke-static {v2}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_9
-
-    .line 67
-    :cond_8
     invoke-interface {v9, v1}, Lkotlinx/coroutines/flow/MutableStateFlow;->setValue(Ljava/lang/Object;)V
 
-    .line 68
     invoke-interface {v3}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
     move-result-object v2
