@@ -2504,7 +2504,7 @@ public final class DashboardScreenKt {
             ComposerKt.sourceInformation(composer3, "925@49356L4460,918@48866L4950");
             StaggeredGridCells fixed = new StaggeredGridCells.Fixed(2);
             Modifier modifierFillMaxSize$default = SizeKt.fillMaxSize$default(Modifier.Companion, 0.0f, 1, (Object) null);
-            PaddingValues paddingValues = PaddingKt.PaddingValues-a9UjIt4(Dp.constructor-impl(16.0f), Dp.constructor-impl(4.0f), Dp.constructor-impl(16.0f), Dp.constructor-impl(124.0f));
+            PaddingValues paddingValues = PaddingKt.PaddingValues-a9UjIt4(Dp.constructor-impl(16.0f), Dp.constructor-impl(4.0f), Dp.constructor-impl(16.0f), Dp.constructor-impl(16.0f));
             Arrangement.Horizontal horizontal = Arrangement.INSTANCE.spacedBy-0680j_4(Dp.constructor-impl(14.0f));
             float f = Dp.constructor-impl(14.0f);
             StaggeredGridCells staggeredGridCells = fixed;
@@ -2530,7 +2530,7 @@ public final class DashboardScreenKt {
             composer3.startReplaceGroup(66260660);
             ComposerKt.sourceInformation(composer3, "989@54219L4339,984@53870L4688");
             Modifier modifierFillMaxSize$default2 = SizeKt.fillMaxSize$default(Modifier.Companion, 0.0f, 1, (Object) null);
-            PaddingValues paddingValues2 = PaddingKt.PaddingValues-a9UjIt4(Dp.constructor-impl(16.0f), Dp.constructor-impl(4.0f), Dp.constructor-impl(16.0f), Dp.constructor-impl(124.0f));
+            PaddingValues paddingValues2 = PaddingKt.PaddingValues-a9UjIt4(Dp.constructor-impl(16.0f), Dp.constructor-impl(4.0f), Dp.constructor-impl(16.0f), Dp.constructor-impl(16.0f));
             Arrangement.Vertical vertical = Arrangement.INSTANCE.spacedBy-0680j_4(Dp.constructor-impl(12.0f));
             ComposerKt.sourceInformationMarkerStart(composer3, 1526169697, "CC(remember):DashboardScreen.kt#9igjgp");
             boolean zChanged2 = composer3.changed(state) | composer3.changed(state2) | composer3.changedInstance(book) | composer3.changedInstance(list) | composer3.changedInstance(list2) | composer3.changed(str) | composer3.changedInstance(bookViewModel) | composer3.changed(function1);

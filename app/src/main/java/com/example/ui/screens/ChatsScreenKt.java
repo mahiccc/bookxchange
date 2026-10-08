@@ -1306,7 +1306,7 @@ public final class ChatsScreenKt {
                 composer.startReplaceGroup(-689498248);
                 ComposerKt.sourceInformation(composer, "364@17021L1245,361@16868L1398");
                 Modifier modifierFillMaxSize$default = SizeKt.fillMaxSize$default(Modifier.Companion, 0.0f, 1, (Object) null);
-                PaddingValues paddingValues2 = PaddingKt.PaddingValues-a9UjIt4$default(0.0f, 0.0f, 0.0f, Dp.constructor-impl(124.0f), 7, (Object) null);
+                PaddingValues paddingValues2 = PaddingKt.PaddingValues-a9UjIt4$default(0.0f, 0.0f, 0.0f, Dp.constructor-impl(16.0f), 7, (Object) null);
                 ComposerKt.sourceInformationMarkerStart(composer, 1086142065, "CC(remember):ChatsScreen.kt#9igjgp");
                 boolean zChangedInstance = composer.changedInstance(list) | composer.changed(str) | composer.changedInstance(bookViewModel) | composer.changedInstance(sharedPreferences) | composer.changed(function1);
                 Object objRememberedValue2 = composer.rememberedValue();

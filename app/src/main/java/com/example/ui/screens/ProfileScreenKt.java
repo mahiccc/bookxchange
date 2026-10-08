@@ -672,7 +672,7 @@ public final class ProfileScreenKt {
             pairArr[5] = TuplesKt.to("REVIEWS", "Reviews");
             final List listListOf = CollectionsKt.listOf(pairArr);
             Modifier modifierPadding = PaddingKt.padding(SizeKt.fillMaxSize$default(Modifier.Companion, 0.0f, 1, str3), paddingValues);
-            PaddingValues paddingValues2 = PaddingKt.PaddingValues-a9UjIt4$default(0.0f, 0.0f, 0.0f, Dp.constructor-impl(124.0f), 7, (Object) null);
+            PaddingValues paddingValues2 = PaddingKt.PaddingValues-a9UjIt4$default(0.0f, 0.0f, 0.0f, Dp.constructor-impl(16.0f), 7, (Object) null);
             Composer composer2 = composer;
             ComposerKt.sourceInformationMarkerStart(composer2, 622267913, "CC(remember):ProfileScreen.kt#9igjgp");
             boolean zChanged = composer2.changed(userCopy$default) | composer2.changed(state) | composer2.changedInstance(list) | composer2.changed(state2) | composer2.changedInstance(bookViewModel) | composer2.changedInstance(list2) | composer2.changed(str) | composer2.changedInstance(list3) | composer2.changedInstance(list4) | composer2.changed(state3);

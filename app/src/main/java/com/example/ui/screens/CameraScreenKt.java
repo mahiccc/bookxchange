@@ -4895,22 +4895,25 @@ public final class CameraScreenKt {
         if (Intrinsics.areEqual(map.get("android.permission.CAMERA"), true)) {
             Activity activityFindActivity = findActivity(context);
             if (activityFindActivity != null) {
-                Task startScanIntent = gmsDocumentScanner.getStartScanIntent(activityFindActivity);
-                final Function1 function1 = new Function1() { // from class: com.example.ui.screens.CameraScreenKt$$ExternalSyntheticLambda6
-                    public final Object invoke(Object obj) {
-                        return CameraScreenKt.CameraScreen$lambda$94$lambda$93$lambda$90(managedActivityResultLauncher, (IntentSender) obj);
-                    }
-                };
-                startScanIntent.addOnSuccessListener(new OnSuccessListener() { // from class: com.example.ui.screens.CameraScreenKt$$ExternalSyntheticLambda7
-                    public final void onSuccess(Object obj) {
-                        function1.invoke(obj);
-                    }
-                }).addOnFailureListener(new OnFailureListener() { // from class: com.example.ui.screens.CameraScreenKt$$ExternalSyntheticLambda8
-                    public final void onFailure(Exception exc) {
-                        CameraScreenKt.CameraScreen$lambda$94$lambda$93$lambda$92(context, managedActivityResultLauncher2, managedActivityResultLauncher3, mutableState, exc);
-                    }
-                });
-            } else {
+                try {
+                    Task startScanIntent = gmsDocumentScanner.getStartScanIntent(activityFindActivity);
+                    final Function1 function1 = new Function1() { // from class: com.example.ui.screens.CameraScreenKt$$ExternalSyntheticLambda6
+                        public final Object invoke(Object obj) {
+                            return CameraScreenKt.CameraScreen$lambda$94$lambda$93$lambda$90(managedActivityResultLauncher, (IntentSender) obj);
+                        }
+                    };
+                    startScanIntent.addOnSuccessListener(new OnSuccessListener() { // from class: com.example.ui.screens.CameraScreenKt$$ExternalSyntheticLambda7
+                        public final void onSuccess(Object obj) {
+                            function1.invoke(obj);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() { // from class: com.example.ui.screens.CameraScreenKt$$ExternalSyntheticLambda8
+                        public final void onFailure(Exception exc) {
+                            CameraScreenKt.CameraScreen$lambda$94$lambda$93$lambda$92(context, managedActivityResultLauncher2, managedActivityResultLauncher3, mutableState, exc);
+                        }
+                    });
+                } catch (Exception scanErr) {
+                    CameraScreen$launchQuickPhoto(context, managedActivityResultLauncher2, managedActivityResultLauncher3, mutableState);
+                }
                 CameraScreen$launchQuickPhoto(context, managedActivityResultLauncher2, managedActivityResultLauncher3, mutableState);
             }
         } else {
@@ -5171,7 +5174,7 @@ public final class CameraScreenKt {
                 }
                 ComposerKt.sourceInformationMarkerEnd(composer2);
                 ButtonKt.Button((Function0) objRememberedValue3, modifier3, z, shape, (ButtonColors) null, (ButtonElevation) null, (BorderStroke) null, (PaddingValues) null, (MutableInteractionSource) null, ComposableSingletons$CameraScreenKt.INSTANCE.m229getLambda$1897981826$app(), composer2, 805306416, 496);
-                SpacerKt.Spacer(SizeKt.height-3ABfNKs(Modifier.Companion, Dp.constructor-impl(124.0f)), composer2, i4);
+                SpacerKt.Spacer(SizeKt.height-3ABfNKs(Modifier.Companion, Dp.constructor-impl(16.0f)), composer2, i4);
                 composer2.endReplaceGroup();
             } else {
                 composer2.startReplaceGroup(-820379545);
@@ -5194,36 +5197,6 @@ public final class CameraScreenKt {
                     composer2.updateRememberedValue(objRememberedValue4);
                 }
                 ComposerKt.sourceInformationMarkerEnd(composer2);
-                ButtonKt.Button((Function0) objRememberedValue4, SizeKt.height-3ABfNKs(SizeKt.fillMaxWidth$default(Modifier.Companion, 0.0f, 1, (Object) null), Dp.constructor-impl(50.0f)), false, RoundedCornerShapeKt.RoundedCornerShape-0680j_4(Dp.constructor-impl(16.0f)), (ButtonColors) null, (ButtonElevation) null, (BorderStroke) null, (PaddingValues) null, (MutableInteractionSource) null, ComposableSingletons$CameraScreenKt.INSTANCE.getLambda$1693687029$app(), composer2, 805306416, 500);
-                SpacerKt.Spacer(SizeKt.height-3ABfNKs(Modifier.Companion, Dp.constructor-impl(12.0f)), composer2, 6);
-                ComposerKt.sourceInformationMarkerStart(composer2, -719152000, "CC(remember):CameraScreen.kt#9igjgp");
-                boolean zChangedInstance4 = composer2.changedInstance(context) | composer2.changedInstance(managedActivityResultLauncher2) | composer2.changedInstance(managedActivityResultLauncher3);
-                Object objRememberedValue5 = composer2.rememberedValue();
-                if (zChangedInstance4 || objRememberedValue5 == Composer.Companion.getEmpty()) {
-                    objRememberedValue5 = new Function0() { // from class: com.example.ui.screens.CameraScreenKt$$ExternalSyntheticLambda13
-                        public final Object invoke() {
-                            return CameraScreenKt.CameraScreen$lambda$170$lambda$169$lambda$98$lambda$97(context, managedActivityResultLauncher2, managedActivityResultLauncher3, mutableState2);
-                        }
-                    };
-                    composer2.updateRememberedValue(objRememberedValue5);
-                }
-                ComposerKt.sourceInformationMarkerEnd(composer2);
-                ButtonKt.OutlinedButton((Function0) objRememberedValue5, SizeKt.height-3ABfNKs(SizeKt.fillMaxWidth$default(Modifier.Companion, 0.0f, 1, (Object) null), Dp.constructor-impl(50.0f)), false, RoundedCornerShapeKt.RoundedCornerShape-0680j_4(Dp.constructor-impl(16.0f)), (ButtonColors) null, (ButtonElevation) null, (BorderStroke) null, (PaddingValues) null, (MutableInteractionSource) null, ComposableSingletons$CameraScreenKt.INSTANCE.m238getLambda$978543241$app(), composer2, 805306416, 500);
-                SpacerKt.Spacer(SizeKt.height-3ABfNKs(Modifier.Companion, Dp.constructor-impl(12.0f)), composer2, 6);
-                ComposerKt.sourceInformationMarkerStart(composer2, -719134001, "CC(remember):CameraScreen.kt#9igjgp");
-                boolean zChangedInstance5 = composer2.changedInstance(managedActivityResultLauncher4);
-                Object objRememberedValue6 = composer2.rememberedValue();
-                if (zChangedInstance5 || objRememberedValue6 == Composer.Companion.getEmpty()) {
-                    objRememberedValue6 = new Function0() { // from class: com.example.ui.screens.CameraScreenKt$$ExternalSyntheticLambda14
-                        public final Object invoke() {
-                            return CameraScreenKt.CameraScreen$lambda$170$lambda$169$lambda$100$lambda$99(managedActivityResultLauncher4);
-                        }
-                    };
-                    composer2.updateRememberedValue(objRememberedValue6);
-                }
-                ComposerKt.sourceInformationMarkerEnd(composer2);
-                ButtonKt.OutlinedButton((Function0) objRememberedValue6, SizeKt.height-3ABfNKs(SizeKt.fillMaxWidth$default(Modifier.Companion, 0.0f, 1, (Object) null), Dp.constructor-impl(50.0f)), false, RoundedCornerShapeKt.RoundedCornerShape-0680j_4(Dp.constructor-impl(16.0f)), (ButtonColors) null, (ButtonElevation) null, (BorderStroke) null, (PaddingValues) null, (MutableInteractionSource) null, ComposableSingletons$CameraScreenKt.INSTANCE.m222getLambda$1009558226$app(), composer2, 805306416, 500);
-                SpacerKt.Spacer(ColumnScope.weight$default(columnScope, Modifier.Companion, 0.01f, false, 2, (Object) null), composer2, 0);
                 SpacerKt.Spacer(SizeKt.height-3ABfNKs(Modifier.Companion, Dp.constructor-impl(16.0f)), composer2, 6);
                 composer2.endReplaceGroup();
             }

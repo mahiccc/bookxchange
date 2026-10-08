@@ -4290,9 +4290,9 @@
     move-result-object v11
 
     .line 281
-    invoke-static {v11, v2}, Landroidx/compose/foundation/layout/PaddingKt;->padding(Landroidx/compose/ui/Modifier;Landroidx/compose/foundation/layout/PaddingValues;)Landroidx/compose/ui/Modifier;
+    move-object v2, v11
 
-    move-result-object v2
+    # replaced Scaffold innerPadding to prevent bottom navigation bar occlusion
 
     const v3, -0x1cd0f17e
 

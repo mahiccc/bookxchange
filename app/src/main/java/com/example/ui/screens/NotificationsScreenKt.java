@@ -866,7 +866,7 @@ public final class NotificationsScreenKt {
                 composer.startReplaceGroup(-635967260);
                 ComposerKt.sourceInformation(composer, "173@7948L5913,167@7641L6220");
                 Modifier modifierPadding2 = PaddingKt.padding(SizeKt.fillMaxSize$default(Modifier.Companion, 0.0f, 1, (Object) null), paddingValues);
-                PaddingValues paddingValues2 = PaddingKt.PaddingValues-a9UjIt4(Dp.constructor-impl(16.0f), Dp.constructor-impl(16.0f), Dp.constructor-impl(16.0f), Dp.constructor-impl(124.0f));
+                PaddingValues paddingValues2 = PaddingKt.PaddingValues-a9UjIt4(Dp.constructor-impl(16.0f), Dp.constructor-impl(16.0f), Dp.constructor-impl(16.0f), Dp.constructor-impl(16.0f));
                 Arrangement.Vertical vertical = Arrangement.INSTANCE.spacedBy-0680j_4(Dp.constructor-impl(8.0f));
                 ComposerKt.sourceInformationMarkerStart(composer, -1128883789, "CC(remember):NotificationsScreen.kt#9igjgp");
                 boolean zChangedInstance = composer.changedInstance(list) | composer.changedInstance(bookViewModel) | composer.changed(function1);
