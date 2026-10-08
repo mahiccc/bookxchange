@@ -2842,30 +2842,6 @@ public final class DashboardScreenKt {
     }
 
     static final Unit DashboardScreen$lambda$276$lambda$275$lambda$274$lambda$257$lambda$256$lambda$244(final MutableState mutableState, LazyStaggeredGridItemScope lazyStaggeredGridItemScope, Composer composer, int i) {
-        Intrinsics.checkNotNullParameter(lazyStaggeredGridItemScope, "$this$item");
-        ComposerKt.sourceInformation(composer, "C928@49583L31,928@49554L61:DashboardScreen.kt#2thlc2");
-        if ((i & 17) == 16 && composer.getSkipping()) {
-            composer.skipToGroupEnd();
-        } else {
-            if (ComposerKt.isTraceInProgress()) {
-                ComposerKt.traceEventStart(732155444, i, -1, "com.example.ui.screens.DashboardScreen.<anonymous>.<anonymous>.<anonymous>.<anonymous>.<anonymous>.<anonymous> (DashboardScreen.kt:928)");
-            }
-            ComposerKt.sourceInformationMarkerStart(composer, -773252685, "CC(remember):DashboardScreen.kt#9igjgp");
-            Object objRememberedValue = composer.rememberedValue();
-            if (objRememberedValue == Composer.Companion.getEmpty()) {
-                objRememberedValue = new Function0() { // from class: com.example.ui.screens.DashboardScreenKt$$ExternalSyntheticLambda23
-                    public final Object invoke() {
-                        return DashboardScreenKt.DashboardScreen$lambda$276$lambda$275$lambda$274$lambda$257$lambda$256$lambda$244$lambda$243$lambda$242(mutableState);
-                    }
-                };
-                composer.updateRememberedValue(objRememberedValue);
-            }
-            ComposerKt.sourceInformationMarkerEnd(composer);
-            AIMatchmakerBanner((Function0) objRememberedValue, composer, 6);
-            if (ComposerKt.isTraceInProgress()) {
-                ComposerKt.traceEventEnd();
-            }
-        }
         return Unit.INSTANCE;
     }
 
@@ -3241,30 +3217,6 @@ public final class DashboardScreenKt {
     }
 
     static final Unit DashboardScreen$lambda$276$lambda$275$lambda$274$lambda$273$lambda$272$lambda$260(final MutableState mutableState, LazyItemScope lazyItemScope, Composer composer, int i) {
-        Intrinsics.checkNotNullParameter(lazyItemScope, "$this$item");
-        ComposerKt.sourceInformation(composer, "C992@54407L31,992@54378L61:DashboardScreen.kt#2thlc2");
-        if ((i & 17) == 16 && composer.getSkipping()) {
-            composer.skipToGroupEnd();
-        } else {
-            if (ComposerKt.isTraceInProgress()) {
-                ComposerKt.traceEventStart(-67233381, i, -1, "com.example.ui.screens.DashboardScreen.<anonymous>.<anonymous>.<anonymous>.<anonymous>.<anonymous>.<anonymous> (DashboardScreen.kt:992)");
-            }
-            ComposerKt.sourceInformationMarkerStart(composer, -186767526, "CC(remember):DashboardScreen.kt#9igjgp");
-            Object objRememberedValue = composer.rememberedValue();
-            if (objRememberedValue == Composer.Companion.getEmpty()) {
-                objRememberedValue = new Function0() { // from class: com.example.ui.screens.DashboardScreenKt$$ExternalSyntheticLambda136
-                    public final Object invoke() {
-                        return DashboardScreenKt.DashboardScreen$lambda$276$lambda$275$lambda$274$lambda$273$lambda$272$lambda$260$lambda$259$lambda$258(mutableState);
-                    }
-                };
-                composer.updateRememberedValue(objRememberedValue);
-            }
-            ComposerKt.sourceInformationMarkerEnd(composer);
-            AIMatchmakerBanner((Function0) objRememberedValue, composer, 6);
-            if (ComposerKt.isTraceInProgress()) {
-                ComposerKt.traceEventEnd();
-            }
-        }
         return Unit.INSTANCE;
     }
 

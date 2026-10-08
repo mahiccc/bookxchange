@@ -4914,7 +4914,6 @@ public final class CameraScreenKt {
                 } catch (Exception scanErr) {
                     CameraScreen$launchQuickPhoto(context, managedActivityResultLauncher2, managedActivityResultLauncher3, mutableState);
                 }
-                CameraScreen$launchQuickPhoto(context, managedActivityResultLauncher2, managedActivityResultLauncher3, mutableState);
             }
         } else {
             mutableState2.setValue("Camera permission is required.");
@@ -5197,6 +5196,7 @@ public final class CameraScreenKt {
                     composer2.updateRememberedValue(objRememberedValue4);
                 }
                 ComposerKt.sourceInformationMarkerEnd(composer2);
+                ButtonKt.Button((Function0) objRememberedValue4, SizeKt.height-3ABfNKs(SizeKt.fillMaxWidth$default(Modifier.Companion, 0.0f, 1, (Object) null), Dp.constructor-impl(50.0f)), true, RoundedCornerShapeKt.RoundedCornerShape-0680j_4(Dp.constructor-impl(16.0f)), (ButtonColors) null, (ButtonElevation) null, (BorderStroke) null, (PaddingValues) null, (MutableInteractionSource) null, ComposableSingletons$CameraScreenKt.INSTANCE.getLambda$1693687029$app(), composer2, 805306416, 496);
                 SpacerKt.Spacer(SizeKt.height-3ABfNKs(Modifier.Companion, Dp.constructor-impl(16.0f)), composer2, 6);
                 composer2.endReplaceGroup();
             }

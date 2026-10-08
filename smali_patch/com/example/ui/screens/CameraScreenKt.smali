@@ -4820,7 +4820,7 @@
 
     const/16 v11, 0x1f4
 
-    const/4 v15, 0x0
+    const/4 v15, 0x1
 
     const/16 v16, 0x0
 
@@ -4860,306 +4860,6 @@
 
     .line 755
     invoke-static/range {p8 .. p20}, Landroidx/compose/material3/ButtonKt;->Button(Lkotlin/jvm/functions/Function0;Landroidx/compose/ui/Modifier;ZLandroidx/compose/ui/graphics/Shape;Landroidx/compose/material3/ButtonColors;Landroidx/compose/material3/ButtonElevation;Landroidx/compose/foundation/BorderStroke;Landroidx/compose/foundation/layout/PaddingValues;Landroidx/compose/foundation/interaction/MutableInteractionSource;Lkotlin/jvm/functions/Function3;Landroidx/compose/runtime/Composer;II)V
-
-    .line 765
-    sget-object v0, Landroidx/compose/ui/Modifier;->Companion:Landroidx/compose/ui/Modifier$Companion;
-
-    check-cast v0, Landroidx/compose/ui/Modifier;
-
-    .line 2216
-    invoke-static/range {v22 .. v22}, Landroidx/compose/ui/unit/Dp;->constructor-impl(F)F
-
-    move-result v5
-
-    .line 765
-    invoke-static {v0, v5}, Landroidx/compose/foundation/layout/SizeKt;->height-3ABfNKs(Landroidx/compose/ui/Modifier;F)Landroidx/compose/ui/Modifier;
-
-    move-result-object v0
-
-    invoke-static {v0, v6, v14}, Landroidx/compose/foundation/layout/SpacerKt;->Spacer(Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;I)V
-
-    const v0, -0x2add6380
-
-    .line 768
-    invoke-static {v6, v0, v13}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerStart(Landroidx/compose/runtime/Composer;ILjava/lang/String;)V
-
-    move-object/from16 v0, p1
-
-    invoke-interface {v6, v0}, Landroidx/compose/runtime/Composer;->changedInstance(Ljava/lang/Object;)Z
-
-    move-result v5
-
-    move-object/from16 v7, p2
-
-    invoke-interface {v6, v7}, Landroidx/compose/runtime/Composer;->changedInstance(Ljava/lang/Object;)Z
-
-    move-result v8
-
-    or-int/2addr v5, v8
-
-    invoke-interface {v6, v2}, Landroidx/compose/runtime/Composer;->changedInstance(Ljava/lang/Object;)Z
-
-    move-result v8
-
-    or-int/2addr v5, v8
-
-    .line 2217
-    invoke-interface {v6}, Landroidx/compose/runtime/Composer;->rememberedValue()Ljava/lang/Object;
-
-    move-result-object v8
-
-    if-nez v5, :cond_1d
-
-    .line 2218
-    sget-object v5, Landroidx/compose/runtime/Composer;->Companion:Landroidx/compose/runtime/Composer$Companion;
-
-    invoke-virtual {v5}, Landroidx/compose/runtime/Composer$Companion;->getEmpty()Ljava/lang/Object;
-
-    move-result-object v5
-
-    if-ne v8, v5, :cond_1e
-
-    .line 768
-    :cond_1d
-    new-instance v8, Lcom/example/ui/screens/CameraScreenKt$$ExternalSyntheticLambda13;
-
-    move-object/from16 v5, p7
-
-    invoke-direct {v8, v0, v7, v2, v5}, Lcom/example/ui/screens/CameraScreenKt$$ExternalSyntheticLambda13;-><init>(Landroid/content/Context;Landroidx/activity/compose/ManagedActivityResultLauncher;Landroidx/activity/compose/ManagedActivityResultLauncher;Landroidx/compose/runtime/MutableState;)V
-
-    .line 2220
-    invoke-interface {v6, v8}, Landroidx/compose/runtime/Composer;->updateRememberedValue(Ljava/lang/Object;)V
-
-    .line 768
-    :cond_1e
-    check-cast v8, Lkotlin/jvm/functions/Function0;
-
-    invoke-static {v6}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerEnd(Landroidx/compose/runtime/Composer;)V
-
-    .line 769
-    sget-object v0, Landroidx/compose/ui/Modifier;->Companion:Landroidx/compose/ui/Modifier$Companion;
-
-    check-cast v0, Landroidx/compose/ui/Modifier;
-
-    const/4 v7, 0x0
-
-    invoke-static {v0, v1, v12, v7}, Landroidx/compose/foundation/layout/SizeKt;->fillMaxWidth$default(Landroidx/compose/ui/Modifier;FILjava/lang/Object;)Landroidx/compose/ui/Modifier;
-
-    move-result-object v0
-
-    .line 2223
-    invoke-static/range {v21 .. v21}, Landroidx/compose/ui/unit/Dp;->constructor-impl(F)F
-
-    move-result v2
-
-    .line 769
-    invoke-static {v0, v2}, Landroidx/compose/foundation/layout/SizeKt;->height-3ABfNKs(Landroidx/compose/ui/Modifier;F)Landroidx/compose/ui/Modifier;
-
-    move-result-object v0
-
-    .line 2224
-    invoke-static/range {v23 .. v23}, Landroidx/compose/ui/unit/Dp;->constructor-impl(F)F
-
-    move-result v2
-
-    .line 770
-    invoke-static {v2}, Landroidx/compose/foundation/shape/RoundedCornerShapeKt;->RoundedCornerShape-0680j_4(F)Landroidx/compose/foundation/shape/RoundedCornerShape;
-
-    move-result-object v2
-
-    check-cast v2, Landroidx/compose/ui/graphics/Shape;
-
-    sget-object v5, Lcom/example/ui/screens/ComposableSingletons$CameraScreenKt;->INSTANCE:Lcom/example/ui/screens/ComposableSingletons$CameraScreenKt;
-
-    invoke-virtual {v5}, Lcom/example/ui/screens/ComposableSingletons$CameraScreenKt;->getLambda$-978543241$app()Lkotlin/jvm/functions/Function3;
-
-    move-result-object v5
-
-    const v7, 0x30000030
-
-    const/16 v10, 0x1f4
-
-    const/4 v11, 0x0
-
-    const/4 v15, 0x0
-
-    const/16 v16, 0x0
-
-    const/16 v17, 0x0
-
-    const/16 v18, 0x0
-
-    const/16 v19, 0x0
-
-    move-object/from16 p6, v0
-
-    move-object/from16 p8, v2
-
-    move-object/from16 p14, v5
-
-    move-object/from16 p15, v6
-
-    move/from16 p16, v7
-
-    move-object/from16 p5, v8
-
-    move/from16 p17, v10
-
-    move/from16 p7, v11
-
-    move-object/from16 p9, v15
-
-    move-object/from16 p10, v16
-
-    move-object/from16 p11, v17
-
-    move-object/from16 p12, v18
-
-    move-object/from16 p13, v19
-
-    .line 767
-    invoke-static/range {p5 .. p17}, Landroidx/compose/material3/ButtonKt;->OutlinedButton(Lkotlin/jvm/functions/Function0;Landroidx/compose/ui/Modifier;ZLandroidx/compose/ui/graphics/Shape;Landroidx/compose/material3/ButtonColors;Landroidx/compose/material3/ButtonElevation;Landroidx/compose/foundation/BorderStroke;Landroidx/compose/foundation/layout/PaddingValues;Landroidx/compose/foundation/interaction/MutableInteractionSource;Lkotlin/jvm/functions/Function3;Landroidx/compose/runtime/Composer;II)V
-
-    .line 777
-    sget-object v0, Landroidx/compose/ui/Modifier;->Companion:Landroidx/compose/ui/Modifier$Companion;
-
-    check-cast v0, Landroidx/compose/ui/Modifier;
-
-    .line 2225
-    invoke-static/range {v22 .. v22}, Landroidx/compose/ui/unit/Dp;->constructor-impl(F)F
-
-    move-result v2
-
-    .line 777
-    invoke-static {v0, v2}, Landroidx/compose/foundation/layout/SizeKt;->height-3ABfNKs(Landroidx/compose/ui/Modifier;F)Landroidx/compose/ui/Modifier;
-
-    move-result-object v0
-
-    invoke-static {v0, v6, v14}, Landroidx/compose/foundation/layout/SpacerKt;->Spacer(Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;I)V
-
-    const v0, -0x2add1d31
-
-    .line 780
-    invoke-static {v6, v0, v13}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerStart(Landroidx/compose/runtime/Composer;ILjava/lang/String;)V
-
-    invoke-interface {v6, v4}, Landroidx/compose/runtime/Composer;->changedInstance(Ljava/lang/Object;)Z
-
-    move-result v0
-
-    .line 2226
-    invoke-interface {v6}, Landroidx/compose/runtime/Composer;->rememberedValue()Ljava/lang/Object;
-
-    move-result-object v2
-
-    if-nez v0, :cond_1f
-
-    .line 2227
-    sget-object v0, Landroidx/compose/runtime/Composer;->Companion:Landroidx/compose/runtime/Composer$Companion;
-
-    invoke-virtual {v0}, Landroidx/compose/runtime/Composer$Companion;->getEmpty()Ljava/lang/Object;
-
-    move-result-object v0
-
-    if-ne v2, v0, :cond_20
-
-    .line 780
-    :cond_1f
-    new-instance v2, Lcom/example/ui/screens/CameraScreenKt$$ExternalSyntheticLambda14;
-
-    invoke-direct {v2, v4}, Lcom/example/ui/screens/CameraScreenKt$$ExternalSyntheticLambda14;-><init>(Landroidx/activity/compose/ManagedActivityResultLauncher;)V
-
-    .line 2229
-    invoke-interface {v6, v2}, Landroidx/compose/runtime/Composer;->updateRememberedValue(Ljava/lang/Object;)V
-
-    .line 780
-    :cond_20
-    check-cast v2, Lkotlin/jvm/functions/Function0;
-
-    invoke-static {v6}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerEnd(Landroidx/compose/runtime/Composer;)V
-
-    .line 781
-    sget-object v0, Landroidx/compose/ui/Modifier;->Companion:Landroidx/compose/ui/Modifier$Companion;
-
-    check-cast v0, Landroidx/compose/ui/Modifier;
-
-    const/4 v7, 0x0
-
-    invoke-static {v0, v1, v12, v7}, Landroidx/compose/foundation/layout/SizeKt;->fillMaxWidth$default(Landroidx/compose/ui/Modifier;FILjava/lang/Object;)Landroidx/compose/ui/Modifier;
-
-    move-result-object v0
-
-    .line 2232
-    invoke-static/range {v21 .. v21}, Landroidx/compose/ui/unit/Dp;->constructor-impl(F)F
-
-    move-result v1
-
-    .line 781
-    invoke-static {v0, v1}, Landroidx/compose/foundation/layout/SizeKt;->height-3ABfNKs(Landroidx/compose/ui/Modifier;F)Landroidx/compose/ui/Modifier;
-
-    move-result-object v0
-
-    .line 2233
-    invoke-static/range {v23 .. v23}, Landroidx/compose/ui/unit/Dp;->constructor-impl(F)F
-
-    move-result v1
-
-    .line 782
-    invoke-static {v1}, Landroidx/compose/foundation/shape/RoundedCornerShapeKt;->RoundedCornerShape-0680j_4(F)Landroidx/compose/foundation/shape/RoundedCornerShape;
-
-    move-result-object v1
-
-    check-cast v1, Landroidx/compose/ui/graphics/Shape;
-
-    sget-object v4, Lcom/example/ui/screens/ComposableSingletons$CameraScreenKt;->INSTANCE:Lcom/example/ui/screens/ComposableSingletons$CameraScreenKt;
-
-    invoke-virtual {v4}, Lcom/example/ui/screens/ComposableSingletons$CameraScreenKt;->getLambda$-1009558226$app()Lkotlin/jvm/functions/Function3;
-
-    move-result-object v4
-
-    const v5, 0x30000030
-
-    const/16 v7, 0x1f4
-
-    const/4 v8, 0x0
-
-    const/4 v10, 0x0
-
-    const/4 v11, 0x0
-
-    const/4 v12, 0x0
-
-    const/4 v13, 0x0
-
-    const/4 v15, 0x0
-
-    move-object/from16 p1, v0
-
-    move-object/from16 p3, v1
-
-    move-object/from16 p0, v2
-
-    move-object/from16 p9, v4
-
-    move/from16 p11, v5
-
-    move-object/from16 p10, v6
-
-    move/from16 p12, v7
-
-    move/from16 p2, v8
-
-    move-object/from16 p4, v10
-
-    move-object/from16 p5, v11
-
-    move-object/from16 p6, v12
-
-    move-object/from16 p7, v13
-
-    move-object/from16 p8, v15
-
-    .line 779
-    invoke-static/range {p0 .. p12}, Landroidx/compose/material3/ButtonKt;->OutlinedButton(Lkotlin/jvm/functions/Function0;Landroidx/compose/ui/Modifier;ZLandroidx/compose/ui/graphics/Shape;Landroidx/compose/material3/ButtonColors;Landroidx/compose/material3/ButtonElevation;Landroidx/compose/foundation/BorderStroke;Landroidx/compose/foundation/layout/PaddingValues;Landroidx/compose/foundation/interaction/MutableInteractionSource;Lkotlin/jvm/functions/Function3;Landroidx/compose/runtime/Composer;II)V
 
     .line 789
     sget-object v0, Landroidx/compose/ui/Modifier;->Companion:Landroidx/compose/ui/Modifier$Companion;
@@ -15469,31 +15169,23 @@
 
     if-eqz p6, :cond_0
 
-    .line 686
+:try_start_scan
     invoke-interface {p1, p6}, Lcom/google/mlkit/vision/documentscanner/GmsDocumentScanner;->getStartScanIntent(Landroid/app/Activity;)Lcom/google/android/gms/tasks/Task;
-
     move-result-object p1
-
-    .line 687
     new-instance p6, Lcom/example/ui/screens/CameraScreenKt$$ExternalSyntheticLambda6;
-
     invoke-direct {p6, p2}, Lcom/example/ui/screens/CameraScreenKt$$ExternalSyntheticLambda6;-><init>(Landroidx/activity/compose/ManagedActivityResultLauncher;)V
-
     new-instance p2, Lcom/example/ui/screens/CameraScreenKt$$ExternalSyntheticLambda7;
-
     invoke-direct {p2, p6}, Lcom/example/ui/screens/CameraScreenKt$$ExternalSyntheticLambda7;-><init>(Lkotlin/jvm/functions/Function1;)V
-
     invoke-virtual {p1, p2}, Lcom/google/android/gms/tasks/Task;->addOnSuccessListener(Lcom/google/android/gms/tasks/OnSuccessListener;)Lcom/google/android/gms/tasks/Task;
-
     move-result-object p1
-
-    .line 690
     new-instance p2, Lcom/example/ui/screens/CameraScreenKt$$ExternalSyntheticLambda8;
-
     invoke-direct {p2, p0, p3, p4, p5}, Lcom/example/ui/screens/CameraScreenKt$$ExternalSyntheticLambda8;-><init>(Landroid/content/Context;Landroidx/activity/compose/ManagedActivityResultLauncher;Landroidx/activity/compose/ManagedActivityResultLauncher;Landroidx/compose/runtime/MutableState;)V
-
     invoke-virtual {p1, p2}, Lcom/google/android/gms/tasks/Task;->addOnFailureListener(Lcom/google/android/gms/tasks/OnFailureListener;)Lcom/google/android/gms/tasks/Task;
-
+:try_end_scan
+    .catch Ljava/lang/Exception; {:try_start_scan .. :try_end_scan} :catch_scan_err
+    goto :goto_0
+:catch_scan_err
+    invoke-static {p0, p3, p4, p5}, Lcom/example/ui/screens/CameraScreenKt;->CameraScreen$launchQuickPhoto(Landroid/content/Context;Landroidx/activity/compose/ManagedActivityResultLauncher;Landroidx/activity/compose/ManagedActivityResultLauncher;Landroidx/compose/runtime/MutableState;)V
     goto :goto_0
 
     .line 695

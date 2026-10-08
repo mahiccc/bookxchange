@@ -28276,20 +28276,14 @@
     :cond_32
     check-cast v1, Ljava/util/List;
 
-    invoke-interface {v1}, Ljava/util/List;->isEmpty()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_curated_has_items
-
     invoke-static/range {v51 .. v51}, Lcom/example/ui/screens/DashboardScreenKt;->DashboardScreen$lambda$23(Landroidx/compose/runtime/State;)Ljava/util/List;
 
     move-result-object v1
-
-    :cond_curated_has_items
     check-cast v1, Ljava/lang/Iterable;
 
     const/4 v14, 0x6
+
+    const/16 v14, 0xa
 
     .line 137
     invoke-static {v1, v14}, Lkotlin/collections/CollectionsKt;->take(Ljava/lang/Iterable;I)Ljava/util/List;
@@ -28301,6 +28295,11 @@
 
     .line 127
     :goto_17
+    invoke-interface {v8}, Ljava/util/List;->isEmpty()Z
+    move-result v0
+    if-eqz v0, :cond_curated_not_empty
+    move-object/from16 v8, p0
+    :cond_curated_not_empty
     move-object v15, v8
 
     check-cast v15, Ljava/util/List;
@@ -41493,7 +41492,7 @@
 
     invoke-static {v1, v2, v3}, Landroidx/compose/foundation/layout/SpacerKt;->Spacer(Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;I)V
 
-    const/4 v1, 0x7
+    const/4 v1, 0x6
 
     .line 758
     new-array v1, v1, [Ljava/lang/String;
@@ -41510,31 +41509,27 @@
 
     aput-object v4, v1, v113
 
-    const-string v4, "RECOMMENDED"
+    const-string v5, "AVAILABLE"
 
-    aput-object v4, v1, v109
+    aput-object v5, v1, v109
 
     const/4 v4, 0x3
 
-    const-string v5, "AVAILABLE"
+    const-string v5, "REQUESTED"
 
     aput-object v5, v1, v4
 
-    const-string v4, "REQUESTED"
-
-    aput-object v4, v1, v110
-
-    const/4 v4, 0x5
+    const/4 v4, 0x4
 
     const-string v15, "BORROWED"
 
     aput-object v15, v1, v4
 
-    const-string v4, "BOOKMARKS"
+    const/4 v4, 0x5
 
-    const/16 v27, 0x6
+    const-string v5, "BOOKMARKS"
 
-    aput-object v4, v1, v27
+    aput-object v5, v1, v4
 
     invoke-static {v1}, Lkotlin/collections/CollectionsKt;->listOf([Ljava/lang/Object;)Ljava/util/List;
 
@@ -46000,120 +45995,9 @@
 .end method
 
 .method static final DashboardScreen$lambda$276$lambda$275$lambda$274$lambda$257$lambda$256$lambda$244(Landroidx/compose/runtime/MutableState;Landroidx/compose/foundation/lazy/staggeredgrid/LazyStaggeredGridItemScope;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
-    .locals 2
-
-    const-string v0, "$this$item"
-
-    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
-
-    const-string p1, "C928@49583L31,928@49554L61:DashboardScreen.kt#2thlc2"
-
-    invoke-static {p2, p1}, Landroidx/compose/runtime/ComposerKt;->sourceInformation(Landroidx/compose/runtime/Composer;Ljava/lang/String;)V
-
-    and-int/lit8 p1, p3, 0x11
-
-    const/16 v0, 0x10
-
-    if-ne p1, v0, :cond_1
-
-    invoke-interface {p2}, Landroidx/compose/runtime/Composer;->getSkipping()Z
-
-    move-result p1
-
-    if-nez p1, :cond_0
-
-    goto :goto_0
-
-    .line 928
-    :cond_0
-    invoke-interface {p2}, Landroidx/compose/runtime/Composer;->skipToGroupEnd()V
-
-    goto :goto_1
-
-    .line 0
-    :cond_1
-    :goto_0
-    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
-
-    move-result p1
-
-    if-eqz p1, :cond_2
-
-    const/4 p1, -0x1
-
-    const-string v0, "com.example.ui.screens.DashboardScreen.<anonymous>.<anonymous>.<anonymous>.<anonymous>.<anonymous>.<anonymous> (DashboardScreen.kt:928)"
-
-    const v1, 0x2ba3ce34
-
-    invoke-static {v1, p3, p1, v0}, Landroidx/compose/runtime/ComposerKt;->traceEventStart(IIILjava/lang/String;)V
-
-    :cond_2
-    const p1, -0x2e16e64d
-
-    const-string p3, "CC(remember):DashboardScreen.kt#9igjgp"
-
-    .line 929
-    invoke-static {p2, p1, p3}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerStart(Landroidx/compose/runtime/Composer;ILjava/lang/String;)V
-
-    .line 3925
-    invoke-interface {p2}, Landroidx/compose/runtime/Composer;->rememberedValue()Ljava/lang/Object;
-
-    move-result-object p1
-
-    .line 3926
-    sget-object p3, Landroidx/compose/runtime/Composer;->Companion:Landroidx/compose/runtime/Composer$Companion;
-
-    invoke-virtual {p3}, Landroidx/compose/runtime/Composer$Companion;->getEmpty()Ljava/lang/Object;
-
-    move-result-object p3
-
-    if-ne p1, p3, :cond_3
-
-    .line 929
-    new-instance p1, Lcom/example/ui/screens/DashboardScreenKt$$ExternalSyntheticLambda23;
-
-    invoke-direct {p1, p0}, Lcom/example/ui/screens/DashboardScreenKt$$ExternalSyntheticLambda23;-><init>(Landroidx/compose/runtime/MutableState;)V
-
-    .line 3928
-    invoke-interface {p2, p1}, Landroidx/compose/runtime/Composer;->updateRememberedValue(Ljava/lang/Object;)V
-
-    .line 929
-    :cond_3
-    check-cast p1, Lkotlin/jvm/functions/Function0;
-
-    invoke-static {p2}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerEnd(Landroidx/compose/runtime/Composer;)V
-
-    const/4 p0, 0x6
-
-    invoke-static {p1, p2, p0}, Lcom/example/ui/screens/DashboardScreenKt;->AIMatchmakerBanner(Lkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;I)V
-
-    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
-
-    move-result p0
-
-    if-eqz p0, :cond_4
-
-    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->traceEventEnd()V
-
-    .line 930
-    :cond_4
-    :goto_1
-    sget-object p0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
-
-    return-object p0
-.end method
-
-.method static final DashboardScreen$lambda$276$lambda$275$lambda$274$lambda$257$lambda$256$lambda$244$lambda$243$lambda$242(Landroidx/compose/runtime/MutableState;)Lkotlin/Unit;
-    .locals 1
-
-    const/4 v0, 0x1
-
-    .line 929
-    invoke-static {p0, v0}, Lcom/example/ui/screens/DashboardScreenKt;->DashboardScreen$lambda$36(Landroidx/compose/runtime/MutableState;Z)V
-
-    sget-object p0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
-
-    return-object p0
+    .registers 5
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+    return-object v0
 .end method
 
 .method static final DashboardScreen$lambda$276$lambda$275$lambda$274$lambda$257$lambda$256$lambda$247(Lcom/example/data/Book;Landroidx/compose/runtime/MutableState;Landroidx/compose/foundation/lazy/staggeredgrid/LazyStaggeredGridItemScope;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
@@ -46617,107 +46501,9 @@
 .end method
 
 .method static final DashboardScreen$lambda$276$lambda$275$lambda$274$lambda$273$lambda$272$lambda$260(Landroidx/compose/runtime/MutableState;Landroidx/compose/foundation/lazy/LazyItemScope;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
-    .locals 2
-
-    const-string v0, "$this$item"
-
-    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
-
-    const-string p1, "C992@54407L31,992@54378L61:DashboardScreen.kt#2thlc2"
-
-    invoke-static {p2, p1}, Landroidx/compose/runtime/ComposerKt;->sourceInformation(Landroidx/compose/runtime/Composer;Ljava/lang/String;)V
-
-    and-int/lit8 p1, p3, 0x11
-
-    const/16 v0, 0x10
-
-    if-ne p1, v0, :cond_1
-
-    invoke-interface {p2}, Landroidx/compose/runtime/Composer;->getSkipping()Z
-
-    move-result p1
-
-    if-nez p1, :cond_0
-
-    goto :goto_0
-
-    .line 992
-    :cond_0
-    invoke-interface {p2}, Landroidx/compose/runtime/Composer;->skipToGroupEnd()V
-
-    goto :goto_1
-
-    .line 0
-    :cond_1
-    :goto_0
-    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
-
-    move-result p1
-
-    if-eqz p1, :cond_2
-
-    const/4 p1, -0x1
-
-    const-string v0, "com.example.ui.screens.DashboardScreen.<anonymous>.<anonymous>.<anonymous>.<anonymous>.<anonymous>.<anonymous> (DashboardScreen.kt:992)"
-
-    const v1, -0x401e665
-
-    invoke-static {v1, p3, p1, v0}, Landroidx/compose/runtime/ComposerKt;->traceEventStart(IIILjava/lang/String;)V
-
-    :cond_2
-    const p1, -0xb21d8a6
-
-    const-string p3, "CC(remember):DashboardScreen.kt#9igjgp"
-
-    .line 993
-    invoke-static {p2, p1, p3}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerStart(Landroidx/compose/runtime/Composer;ILjava/lang/String;)V
-
-    .line 3962
-    invoke-interface {p2}, Landroidx/compose/runtime/Composer;->rememberedValue()Ljava/lang/Object;
-
-    move-result-object p1
-
-    .line 3963
-    sget-object p3, Landroidx/compose/runtime/Composer;->Companion:Landroidx/compose/runtime/Composer$Companion;
-
-    invoke-virtual {p3}, Landroidx/compose/runtime/Composer$Companion;->getEmpty()Ljava/lang/Object;
-
-    move-result-object p3
-
-    if-ne p1, p3, :cond_3
-
-    .line 993
-    new-instance p1, Lcom/example/ui/screens/DashboardScreenKt$$ExternalSyntheticLambda136;
-
-    invoke-direct {p1, p0}, Lcom/example/ui/screens/DashboardScreenKt$$ExternalSyntheticLambda136;-><init>(Landroidx/compose/runtime/MutableState;)V
-
-    .line 3965
-    invoke-interface {p2, p1}, Landroidx/compose/runtime/Composer;->updateRememberedValue(Ljava/lang/Object;)V
-
-    .line 993
-    :cond_3
-    check-cast p1, Lkotlin/jvm/functions/Function0;
-
-    invoke-static {p2}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerEnd(Landroidx/compose/runtime/Composer;)V
-
-    const/4 p0, 0x6
-
-    invoke-static {p1, p2, p0}, Lcom/example/ui/screens/DashboardScreenKt;->AIMatchmakerBanner(Lkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;I)V
-
-    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
-
-    move-result p0
-
-    if-eqz p0, :cond_4
-
-    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->traceEventEnd()V
-
-    .line 994
-    :cond_4
-    :goto_1
-    sget-object p0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
-
-    return-object p0
+    .registers 5
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+    return-object v0
 .end method
 
 .method static final DashboardScreen$lambda$276$lambda$275$lambda$274$lambda$273$lambda$272$lambda$260$lambda$259$lambda$258(Landroidx/compose/runtime/MutableState;)Lkotlin/Unit;
