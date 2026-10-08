@@ -45249,7 +45249,7 @@
 
     const/4 v15, 0x1
 
-    const/high16 p24, 0x42f80000    # 124.0f
+    const/high16 p24, 0x41800000    # 16.0f
 
     const/4 v8, 0x0
 

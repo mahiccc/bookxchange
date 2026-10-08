@@ -4358,7 +4358,7 @@
 
     check-cast v0, Landroidx/compose/ui/Modifier;
 
-    const/high16 v1, 0x42f80000    # 124.0f
+    const/high16 v1, 0x41800000    # 16.0f
 
     .line 2353
     invoke-static {v1}, Landroidx/compose/ui/unit/Dp;->constructor-impl(F)F

@@ -11289,8 +11289,18 @@
 
     const v26, 0x1fffe
 
-    .line 1824
-    const-string v2, "Borrowed"
+    sget-boolean v2, Lcom/example/ui/screens/BookDetailsDialogKt;->sCurrentBookIsOwner:Z
+
+    if-eqz v2, :cond_join_queue
+
+    const-string v2, "Book with Borrower"
+
+    goto :goto_join_queue
+
+    :cond_join_queue
+    const-string v2, "Join Queue (Borrow Next)"
+
+    :goto_join_queue
 
     const/4 v3, 0x0
 
@@ -11991,8 +12001,18 @@
 
     const v26, 0x1fffe
 
-    .line 1584
+    sget-boolean v2, Lcom/example/ui/screens/BookDetailsDialogKt;->sCurrentBookIsOwner:Z
+
+    if-eqz v2, :cond_req_borrow
+
+    const-string v2, "Your Book (Available)"
+
+    goto :goto_req_borrow
+
+    :cond_req_borrow
     const-string v2, "Request to Borrow"
+
+    :goto_req_borrow
 
     const/4 v3, 0x0
 

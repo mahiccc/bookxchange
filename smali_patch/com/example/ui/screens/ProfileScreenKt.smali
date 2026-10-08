@@ -14818,7 +14818,7 @@
 
     move-result-object v21
 
-    const/high16 v0, 0x42f80000    # 124.0f
+    const/high16 v0, 0x41800000    # 16.0f
 
     .line 2898
     invoke-static {v0}, Landroidx/compose/ui/unit/Dp;->constructor-impl(F)F

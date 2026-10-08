@@ -82,6 +82,15 @@
     xi = 0x30
 .end annotation
 
+# static fields
+.field public static sCurrentBook:Lcom/example/data/Book;
+
+.field public static sCurrentBookIsOwner:Z
+
+.field public static sCurrentViewModel:Lcom/example/ui/BookViewModel;
+
+.field public static sCurrentOnDismiss:Lkotlin/jvm/functions/Function0;
+
 
 # direct methods
 .method public static final BookConditionPhotoDialog(Lcom/example/data/Book;Lkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;I)V
@@ -7043,6 +7052,14 @@
             "II)V"
         }
     .end annotation
+
+    sput-object p0, Lcom/example/ui/screens/BookDetailsDialogKt;->sCurrentBook:Lcom/example/data/Book;
+
+    sput-boolean p1, Lcom/example/ui/screens/BookDetailsDialogKt;->sCurrentBookIsOwner:Z
+
+    sput-object p3, Lcom/example/ui/screens/BookDetailsDialogKt;->sCurrentViewModel:Lcom/example/ui/BookViewModel;
+
+    sput-object p4, Lcom/example/ui/screens/BookDetailsDialogKt;->sCurrentOnDismiss:Lkotlin/jvm/functions/Function0;
 
     move-object/from16 v1, p0
 
@@ -34872,6 +34889,14 @@
 .method static final BookDetailsDialog$lambda$343$lambda$342$lambda$341$lambda$340(ZLcom/example/data/Book;Lcom/example/ui/BookViewModel;Lkotlin/jvm/functions/Function0;ZZLandroidx/activity/compose/ManagedActivityResultLauncher;Lkotlin/jvm/functions/Function0;Landroidx/compose/runtime/MutableState;Landroidx/compose/runtime/MutableState;Landroidx/compose/runtime/MutableState;Landroidx/compose/runtime/MutableState;Landroidx/compose/runtime/MutableState;Landroid/content/Context;Landroidx/compose/runtime/MutableState;Landroidx/compose/runtime/MutableState;Landroidx/compose/runtime/MutableState;Landroidx/compose/runtime/MutableState;Landroidx/compose/runtime/MutableState;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
     .locals 40
 
+    sput-boolean p0, Lcom/example/ui/screens/BookDetailsDialogKt;->sCurrentBookIsOwner:Z
+
+    sput-object p1, Lcom/example/ui/screens/BookDetailsDialogKt;->sCurrentBook:Lcom/example/data/Book;
+
+    sput-object p2, Lcom/example/ui/screens/BookDetailsDialogKt;->sCurrentViewModel:Lcom/example/ui/BookViewModel;
+
+    sput-object p3, Lcom/example/ui/screens/BookDetailsDialogKt;->sCurrentOnDismiss:Lkotlin/jvm/functions/Function0;
+
     move-object/from16 v0, p1
 
     move-object/from16 v1, p2
@@ -40966,9 +40991,23 @@
 
     move-result-object v2
 
-    const/high16 v4, 0x30000000
+    sget-boolean v4, Lcom/example/ui/screens/BookDetailsDialogKt;->sCurrentBookIsOwner:Z
+
+    if-eqz v4, :cond_enabled_avail
+
+    const/4 v6, 0x0
+
+    const/16 v5, 0x1f8
+
+    goto :goto_avail_enabled
+
+    :cond_enabled_avail
+    const/4 v6, 0x1
 
     const/16 v5, 0x1fc
+
+    :goto_avail_enabled
+    const/high16 v4, 0x30000000
 
     const/4 v7, 0x0
 
@@ -43942,7 +43981,18 @@
 
     const/16 v5, 0x1f8
 
+    sget-boolean v6, Lcom/example/ui/screens/BookDetailsDialogKt;->sCurrentBookIsOwner:Z
+
+    if-eqz v6, :cond_enabled_queue
+
     const/4 v6, 0x0
+
+    goto :goto_queue_enabled
+
+    :cond_enabled_queue
+    const/4 v6, 0x1
+
+    :goto_queue_enabled
 
     const/4 v7, 0x0
 
@@ -48942,7 +48992,15 @@
 .method static final BookDetailsDialog$lambda$343$lambda$342$lambda$341$lambda$340$lambda$339$lambda$285$lambda$284(Lcom/example/ui/BookViewModel;Lcom/example/data/Book;Lkotlin/jvm/functions/Function0;)Lkotlin/Unit;
     .locals 4
 
-    .line 1578
+    sget-boolean v0, Lcom/example/ui/screens/BookDetailsDialogKt;->sCurrentBookIsOwner:Z
+
+    if-eqz v0, :cond_do_request
+
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    return-object v0
+
+    :cond_do_request
     invoke-virtual {p0, p1}, Lcom/example/ui/BookViewModel;->requestBook(Lcom/example/data/Book;)V
 
     .line 1579
@@ -50034,7 +50092,8 @@
 .method static final BookDetailsDialog$lambda$343$lambda$342$lambda$341$lambda$340$lambda$339$lambda$324$lambda$323$lambda$322()Lkotlin/Unit;
     .locals 1
 
-    .line 1820
+    invoke-static {}, Lcom/example/ui/screens/BookDetailsDialogKt;->joinBookQueue()V
+
     sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
 
     return-object v0
@@ -56159,4 +56218,74 @@
     invoke-static {p0, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
 
     return-object p0
+.end method
+
+.method public static final joinBookQueue()V
+    .locals 5
+
+    sget-object v0, Lcom/example/ui/screens/BookDetailsDialogKt;->sCurrentViewModel:Lcom/example/ui/BookViewModel;
+
+    if-eqz v0, :cond_end
+
+    sget-object v1, Lcom/example/ui/screens/BookDetailsDialogKt;->sCurrentBook:Lcom/example/data/Book;
+
+    if-eqz v1, :cond_end
+
+    sget-boolean v2, Lcom/example/ui/screens/BookDetailsDialogKt;->sCurrentBookIsOwner:Z
+
+    if-eqz v2, :cond_proceed
+
+    return-void
+
+    :cond_proceed
+    invoke-virtual {v0}, Lcom/example/ui/BookViewModel;->getCurrentUser()Lkotlinx/coroutines/flow/StateFlow;
+
+    move-result-object v2
+
+    invoke-interface {v2}, Lkotlinx/coroutines/flow/StateFlow;->getValue()Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Ljava/lang/String;
+
+    if-eqz v2, :cond_end
+
+    invoke-virtual {v1}, Lcom/example/data/Book;->getId()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v1}, Lcom/example/data/Book;->getOwnerName()Ljava/lang/String;
+
+    move-result-object v4
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    const-string p0, "QUEUE REQUEST: Hi! I joined the waitlist queue to borrow \'"
+
+    invoke-direct {v2, p0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v1}, Lcom/example/data/Book;->getTitle()Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-virtual {v2, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string p0, "\' once it is returned to you. Please reserve it for me next!"
+
+    invoke-virtual {v2, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v0, v3, v4, v2}, Lcom/example/ui/BookViewModel;->sendMessage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    sget-object v0, Lcom/example/ui/screens/BookDetailsDialogKt;->sCurrentOnDismiss:Lkotlin/jvm/functions/Function0;
+
+    if-eqz v0, :cond_end
+
+    invoke-interface {v0}, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
+
+    :cond_end
+    return-void
 .end method
