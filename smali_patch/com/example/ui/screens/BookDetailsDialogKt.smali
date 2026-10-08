@@ -56221,7 +56221,7 @@
 .end method
 
 .method public static final joinBookQueue()V
-    .locals 5
+    .registers 6
 
     sget-object v0, Lcom/example/ui/screens/BookDetailsDialogKt;->sCurrentViewModel:Lcom/example/ui/BookViewModel;
 
@@ -56260,19 +56260,19 @@
 
     new-instance v2, Ljava/lang/StringBuilder;
 
-    const-string p0, "QUEUE REQUEST: Hi! I joined the waitlist queue to borrow \'"
+    const-string v5, "QUEUE REQUEST: Hi! I joined the waitlist queue to borrow \'"
 
-    invoke-direct {v2, p0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v2, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
     invoke-virtual {v1}, Lcom/example/data/Book;->getTitle()Ljava/lang/String;
 
-    move-result-object p0
+    move-result-object v5
 
-    invoke-virtual {v2, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string p0, "\' once it is returned to you. Please reserve it for me next!"
+    const-string v5, "\' once it is returned to you. Please reserve it for me next!"
 
-    invoke-virtual {v2, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
