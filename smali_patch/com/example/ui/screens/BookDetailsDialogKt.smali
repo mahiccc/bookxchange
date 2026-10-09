@@ -25998,9 +25998,23 @@
 .end method
 
 .method static final BookDetailsDialog$lambda$343$lambda$342$lambda$341$lambda$169$lambda$168$lambda$166$lambda$165(Lcom/example/ui/BookViewModel;Lcom/example/data/Book;)Lkotlin/Unit;
-    .locals 0
+    .locals 3
 
     .line 733
+    invoke-virtual {p1}, Lcom/example/data/Book;->getTitle()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {p1}, Lcom/example/data/Book;->getAuthor()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {p1}, Lcom/example/data/Book;->getGenre()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {p0, v0, v1, v2}, Lcom/example/ui/BookViewModel;->addToWishlist(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
     invoke-virtual {p0, p1}, Lcom/example/ui/BookViewModel;->toggleBookmark(Lcom/example/data/Book;)V
 
     sget-object p0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;

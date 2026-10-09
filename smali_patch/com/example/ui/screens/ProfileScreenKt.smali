@@ -15136,11 +15136,9 @@
 
     move-object/from16 p7, v2
 
-    move/from16 p8, v3
-
     move-object/from16 p5, v7
 
-    invoke-static/range {p4 .. p9}, Landroidx/compose/foundation/lazy/LazyListScope;->stickyHeader$default(Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)V
+    invoke-static/range {p4 .. p9}, Landroidx/compose/foundation/lazy/LazyListScope;->item$default(Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)V
 
     .line 338
     sget-object v2, Lcom/example/ui/screens/ComposableSingletons$ProfileScreenKt;->INSTANCE:Lcom/example/ui/screens/ComposableSingletons$ProfileScreenKt;
