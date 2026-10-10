@@ -26488,7 +26488,7 @@
     const v28, 0xffde
 
     .line 2764
-    const-string v4, "Curated For You"
+    const-string v4, "\u2728 Curated For You"
 
     move v6, v5
 
@@ -43609,7 +43609,7 @@
 
     const v38, 0xfdfa
 
-    const-string v14, "This book isn\'t available right now. Add it to your Wishlist to get notified the second someone nearby lists it!"
+    const-string v14, "No books found matching this filter right now. Try switching categories or add this title to your Wishlist to get notified instantly!"
 
     const/16 v21, 0x0
 

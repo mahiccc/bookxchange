@@ -257,12 +257,12 @@
 
     if-eqz v7, :cond_c
 
-    const-string v7, "Confirm Book Handover"
+    const-string v7, "\ud83c\udf89 Book Handover Confirmed! \u2728"
 
     goto :goto_7
 
     :cond_c
-    const-string v7, "Confirm Book Return"
+    const-string v7, "\ud83c\udf8a Book Return Completed! \ud83c\udf31"
 
     .line 496
     :goto_7

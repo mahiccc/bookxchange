@@ -195,7 +195,7 @@
 
     new-instance v2, Ljava/lang/StringBuilder;
 
-    const-string v4, "My Books ("
+    const-string v4, "\ud83d\udcda My Books ("
 
     invoke-direct {v2, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
@@ -231,7 +231,7 @@
 
     new-instance v2, Ljava/lang/StringBuilder;
 
-    const-string v4, "All Books ("
+    const-string v4, "\ud83d\udcd6 All Books ("
 
     invoke-direct {v2, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 

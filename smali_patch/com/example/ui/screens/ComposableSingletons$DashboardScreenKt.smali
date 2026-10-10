@@ -19614,7 +19614,7 @@
     const v26, 0x1fffe
 
     .line 725
-    const-string v2, "Search title or author..."
+    const-string v2, "Search books, authors, genres..."
 
     const/4 v3, 0x0
 
