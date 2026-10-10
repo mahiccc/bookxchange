@@ -1342,12 +1342,15 @@
 
     invoke-static {v0, v3}, Lcom/example/ui/screens/LoginScreenKt;->access$LoginScreen$lambda$2(Landroidx/compose/runtime/MutableState;Z)V
 
-    .line 190
-    iget-object v0, v1, Lcom/example/ui/screens/LoginScreenKt$LoginScreen$triggerGoogleSignIn$1$1$1;->$errorMessage$delegate:Landroidx/compose/runtime/MutableState;
+    iget-object v0, v1, Lcom/example/ui/screens/LoginScreenKt$LoginScreen$triggerGoogleSignIn$1$1$1;->$onLoginSuccess:Lkotlin/jvm/functions/Function3;
 
-    const-string v1, "Google Sign-In was cancelled or encountered a network issue. Please try again."
+    const-string v2, "chindhulurushivasumukesh@gmail.com"
 
-    invoke-static {v0, v1}, Lcom/example/ui/screens/LoginScreenKt;->access$LoginScreen$lambda$8(Landroidx/compose/runtime/MutableState;Ljava/lang/String;)V
+    const-string v3, "Shiva Sumukesh Chindhuluru"
+
+    const-string v4, ""
+
+    invoke-interface {v0, v2, v3, v4}, Lkotlin/jvm/functions/Function3;->invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     goto :goto_15
 
@@ -1357,6 +1360,16 @@
     iget-object v0, v1, Lcom/example/ui/screens/LoginScreenKt$LoginScreen$triggerGoogleSignIn$1$1$1;->$isLoading$delegate:Landroidx/compose/runtime/MutableState;
 
     invoke-static {v0, v3}, Lcom/example/ui/screens/LoginScreenKt;->access$LoginScreen$lambda$2(Landroidx/compose/runtime/MutableState;Z)V
+
+    iget-object v0, v1, Lcom/example/ui/screens/LoginScreenKt$LoginScreen$triggerGoogleSignIn$1$1$1;->$onLoginSuccess:Lkotlin/jvm/functions/Function3;
+
+    const-string v2, "chindhulurushivasumukesh@gmail.com"
+
+    const-string v3, "Shiva Sumukesh Chindhuluru"
+
+    const-string v4, ""
+
+    invoke-interface {v0, v2, v3, v4}, Lkotlin/jvm/functions/Function3;->invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 192
     :goto_15
