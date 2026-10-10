@@ -2488,14 +2488,6 @@
     invoke-static {v7, p0}, Lcom/example/ui/screens/LoginScreenKt;->LoginScreen$lambda$8(Landroidx/compose/runtime/MutableState;Ljava/lang/String;)V
 
     :cond_2
-    const-string v0, "mahiccc@gmail.com"
-
-    const-string v1, "Mahesh"
-
-    const-string v2, ""
-
-    invoke-interface {p3, v0, v1, v2}, Lkotlin/jvm/functions/Function3;->invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
     sget-object p0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
 
     goto :goto_3
@@ -2506,14 +2498,6 @@
     .line 108
     invoke-static {v8, v2}, Lcom/example/ui/screens/LoginScreenKt;->LoginScreen$lambda$2(Landroidx/compose/runtime/MutableState;Z)V
 
-    const-string v0, "mahiccc@gmail.com"
-
-    const-string v1, "Mahesh"
-
-    const-string v2, ""
-
-    invoke-interface {p3, v0, v1, v2}, Lkotlin/jvm/functions/Function3;->invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
     .line 110
     :goto_3
     sget-object p0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
@@ -2523,20 +2507,6 @@
 
 .method static final LoginScreen$lambda$13$lambda$12(Lkotlinx/coroutines/CoroutineScope;Landroidx/compose/runtime/MutableState;Landroidx/compose/runtime/MutableState;Landroidx/compose/runtime/MutableState;Landroid/content/Context;Ljava/lang/String;Lkotlin/jvm/functions/Function3;Landroidx/activity/compose/ManagedActivityResultLauncher;)Lkotlin/Unit;
     .locals 10
-
-    const-string v0, "chindhulurushivasumukesh@gmail.com"
-
-    const-string v1, "Shiva Sumukesh Chindhuluru"
-
-    const-string v2, ""
-
-    move-object/from16 v3, p6
-
-    invoke-interface {v3, v0, v1, v2}, Lkotlin/jvm/functions/Function3;->invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
-
-    return-object v0
 
     const/4 v0, 0x1
 

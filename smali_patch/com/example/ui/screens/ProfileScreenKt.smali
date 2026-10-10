@@ -14825,18 +14825,18 @@
 
     move-result v8
 
-    const/4 v9, 0x7
+    const/high16 v0, 0x42c00000    # 96.0f
 
-    const/4 v10, 0x0
+    invoke-static {v0}, Landroidx/compose/ui/unit/Dp;->constructor-impl(F)F
+
+    move-result v7
 
     const/4 v5, 0x0
 
     const/4 v6, 0x0
 
-    const/4 v7, 0x0
-
     .line 255
-    invoke-static/range {v5 .. v10}, Landroidx/compose/foundation/layout/PaddingKt;->PaddingValues-a9UjIt4$default(FFFFILjava/lang/Object;)Landroidx/compose/foundation/layout/PaddingValues;
+    invoke-static {v5, v6, v5, v7}, Landroidx/compose/foundation/layout/PaddingKt;->PaddingValues-a9UjIt4(FFFF)Landroidx/compose/foundation/layout/PaddingValues;
 
     move-result-object v22
 
@@ -15772,6 +15772,24 @@
     .line 442
     :cond_a
     :goto_0
+    sget-object v0, Lcom/example/ui/screens/ComposableSingletons$ProfileScreenKt;->INSTANCE:Lcom/example/ui/screens/ComposableSingletons$ProfileScreenKt;
+
+    invoke-virtual {v0}, Lcom/example/ui/screens/ComposableSingletons$ProfileScreenKt;->getLambda$1443702511$app()Lkotlin/jvm/functions/Function3;
+
+    move-result-object v3
+
+    const-string v1, "profile_bottom_inset_spacer"
+
+    const/4 v2, 0x0
+
+    const/4 v4, 0x2
+
+    const/4 v5, 0x0
+
+    move-object/from16 v0, p20
+
+    invoke-static/range {v0 .. v5}, Landroidx/compose/foundation/lazy/LazyListScope;->item$default(Landroidx/compose/foundation/lazy/LazyListScope;Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)V
+
     sget-object p0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
 
     return-object p0
