@@ -58740,32 +58740,37 @@
     invoke-virtual {p1, v0}, Ljava/lang/String;->toLowerCase(Ljava/util/Locale;)Ljava/lang/String;
     move-result-object p1
 
-    const-string v0, "sumukesh"
+    # Extract user handle before '@' if email
+    const-string v0, "@"
     invoke-virtual {p0, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
     move-result v1
-    if-eqz v1, :cond_check_shiva
-
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    if-eqz v1, :cond_p0_clean
+    const/4 v1, 0x0
+    invoke-virtual {p0, v0}, Ljava/lang/String;->indexOf(Ljava/lang/String;)I
     move-result v0
-    if-eqz v0, :cond_check_shiva
+    invoke-virtual {p0, v1, v0}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+    move-result-object p0
+
+    :cond_p0_clean
+    const-string v0, "@"
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    move-result v1
+    if-eqz v1, :cond_p1_clean
+    const/4 v1, 0x0
+    invoke-virtual {p1, v0}, Ljava/lang/String;->indexOf(Ljava/lang/String;)I
+    move-result v0
+    invoke-virtual {p1, v1, v0}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+    move-result-object p1
+
+    :cond_p1_clean
+    invoke-virtual {p0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    move-result v0
+    if-eqz v0, :cond_check_false
 
     const/4 v0, 0x1
     return v0
 
-    :cond_check_shiva
-    const-string v0, "shiva"
-    invoke-virtual {p0, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
-    move-result v1
-    if-eqz v1, :cond_false
-
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
-    move-result v0
-    if-eqz v0, :cond_false
-
-    const/4 v0, 0x1
-    return v0
-
-    :cond_false
+    :cond_check_false
     const/4 v0, 0x0
     return v0
 .end method

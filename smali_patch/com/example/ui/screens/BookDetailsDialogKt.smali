@@ -29774,7 +29774,7 @@
     move/from16 v15, v36
 
     :goto_8
-    goto :cond_1a
+# Removed goto :cond_1a to restore owner card action button
 
     if-nez p0, :cond_1a
 

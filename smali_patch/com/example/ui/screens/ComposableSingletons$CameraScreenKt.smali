@@ -845,7 +845,7 @@
 
     const v24, 0xfffe
 
-    const-string v0, "Scan Book Cover (AI)"
+    const-string v0, "Add Book (Scan or Enter Details)"
 
     const/4 v1, 0x0
 

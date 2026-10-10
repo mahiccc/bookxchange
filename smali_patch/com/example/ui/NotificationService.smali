@@ -84,6 +84,8 @@
 .end field
 
 
+.field private static lastReadingReminderTime:J
+
 # direct methods
 .method static constructor <clinit>()V
     .locals 2
@@ -448,6 +450,10 @@
     invoke-static {v1, v2}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 84
+    move-object/from16 v2, p3
+
+    invoke-virtual/range {p0 .. p3}, Lcom/example/ui/NotificationService;->checkReadingReminders(Landroid/content/Context;Ljava/util/List;Ljava/lang/String;)V
+
     invoke-interface {v1}, Ljava/util/List;->isEmpty()Z
 
     move-result v2
@@ -1970,5 +1976,97 @@
 .method public final markInitialized()V
     .locals 0
 
+    return-void
+.end method
+
+.method public final checkReadingReminders(Landroid/content/Context;Ljava/util/List;Ljava/lang/String;)V
+    .registers 14
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroid/content/Context;",
+            "Ljava/util/List<",
+            "Lcom/example/data/Book;",
+            ">;",
+            "Ljava/lang/String;",
+            ")V"
+        }
+    .end annotation
+
+    if-eqz p1, :cond_rem_done
+    if-eqz p2, :cond_rem_done
+    if-nez p3, :cond_check_time
+
+    :cond_rem_done
+    return-void
+
+    :cond_check_time
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+    move-result-wide v0
+    sget-wide v2, Lcom/example/ui/NotificationService;->lastReadingReminderTime:J
+    sub-long v2, v0, v2
+    # 60,000 ms (1 minute interval between reminders)
+    const-wide/32 v4, 0xea60
+    cmp-long v2, v2, v4
+    if-gez v2, :cond_start_scan
+    return-void
+
+    :cond_start_scan
+    invoke-interface {p2}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+    move-result-object p2
+
+    :cond_loop_books
+    invoke-interface {p2}, Ljava/util/Iterator;->hasNext()Z
+    move-result v2
+    if-eqz v2, :cond_rem_done
+
+    invoke-interface {p2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    move-result-object v2
+    check-cast v2, Lcom/example/data/Book;
+
+    # Check if status is BORROWED
+    invoke-virtual {v2}, Lcom/example/data/Book;->getStatus()Ljava/lang/String;
+    move-result-object v3
+    const-string v4, "BORROWED"
+    invoke-virtual {v4, v3}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+    move-result v3
+    if-nez v3, :cond_check_user
+
+    # Also check if status is READING or LENT
+    invoke-virtual {v2}, Lcom/example/data/Book;->getStatus()Ljava/lang/String;
+    move-result-object v3
+    const-string v4, "READING"
+    invoke-virtual {v4, v3}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+    move-result v3
+    if-eqz v3, :cond_loop_books
+
+    :cond_check_user
+    invoke-virtual {v2}, Lcom/example/data/Book;->getBorrowerName()Ljava/lang/String;
+    move-result-object v3
+    invoke-static {v3, p3}, Lcom/example/ui/screens/DashboardScreenKt;->isUserMatch(Ljava/lang/String;Ljava/lang/String;)Z
+    move-result v3
+    if-eqz v3, :cond_loop_books
+
+    # Found a book currently borrowed/read by this user!
+    sput-wide v0, Lcom/example/ui/NotificationService;->lastReadingReminderTime:J
+
+    sget-object v4, Lcom/example/ui/NotificationHelper;->INSTANCE:Lcom/example/ui/NotificationHelper;
+
+    const-string v5, "Reading Reminder Book"
+
+    new-instance v6, Ljava/lang/StringBuilder;
+    const-string v7, "You are reading '"
+    invoke-direct {v6, v7}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v2}, Lcom/example/data/Book;->getTitle()Ljava/lang/String;
+    move-result-object v2
+    invoke-virtual {v6, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v2
+    const-string v6, "'. Please return ASAP when finished so others can enjoy it!"
+    invoke-virtual {v2, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v2
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v2
+
+    invoke-virtual {v4, p1, v5, v2}, Lcom/example/ui/NotificationHelper;->showNotification(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
     return-void
 .end method

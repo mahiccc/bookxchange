@@ -80,6 +80,8 @@
 .end annotation
 
 
+.field public static sCurrentCapturedBitmapState:Landroidx/compose/runtime/MutableState;
+
 # direct methods
 .method public static final CameraScreen(Lkotlin/jvm/functions/Function16;Landroidx/compose/ui/Modifier;Ljava/lang/String;Landroidx/compose/runtime/Composer;II)V
     .locals 44
@@ -2720,6 +2722,8 @@
 
     .line 731
     invoke-static {v6, v12, v13}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerStart(Landroidx/compose/runtime/Composer;ILjava/lang/String;)V
+
+    sput-object p6, Lcom/example/ui/screens/CameraScreenKt;->sCurrentCapturedBitmapState:Landroidx/compose/runtime/MutableState;
 
     invoke-static/range {p6 .. p6}, Lcom/example/ui/screens/CameraScreenKt;->CameraScreen$lambda$25(Landroidx/compose/runtime/MutableState;)Landroid/graphics/Bitmap;
 
@@ -13710,11 +13714,21 @@
 .end method
 
 .method static final CameraScreen$lambda$170$lambda$169$lambda$96$lambda$95(Landroidx/activity/compose/ManagedActivityResultLauncher;)Lkotlin/Unit;
-    .locals 0
+    .registers 2
 
     .line 756
-    invoke-static {p0}, Lcom/example/ui/screens/CameraScreenKt;->CameraScreen$launchCameraAndLocation(Landroidx/activity/compose/ManagedActivityResultLauncher;)V
+    # Always open form fields so user can immediately type book details, and also launch scanner
+    sget-object v0, Lcom/example/ui/screens/CameraScreenKt;->sCurrentCapturedBitmapState:Landroidx/compose/runtime/MutableState;
+    if-eqz v0, :cond_skip_fb
+    invoke-static {v0}, Lcom/example/ui/screens/CameraScreenKt;->openManualEntryFallback(Landroidx/compose/runtime/MutableState;)V
 
+    :cond_skip_fb
+    :try_start_launch
+    invoke-static {p0}, Lcom/example/ui/screens/CameraScreenKt;->CameraScreen$launchCameraAndLocation(Landroidx/activity/compose/ManagedActivityResultLauncher;)V
+    :try_end_launch
+    .catchall {:try_start_launch .. :try_end_launch} :catch_launch
+
+    :catch_launch
     sget-object p0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
 
     return-object p0
@@ -16439,4 +16453,41 @@
     invoke-static {p0, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
 
     return-object p0
+.end method
+
+.method public static createManualEntryBitmap()Landroid/graphics/Bitmap;
+    .registers 4
+
+    const/16 v0, 0x12c
+    const/16 v1, 0x190
+    sget-object v2, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+    invoke-static {v0, v1, v2}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    move-result-object v0
+
+    new-instance v1, Landroid/graphics/Canvas;
+    invoke-direct {v1, v0}, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
+
+    const v2, -0x332212
+    invoke-virtual {v1, v2}, Landroid/graphics/Canvas;->drawColor(I)V
+
+    return-object v0
+.end method
+
+.method public static openManualEntryFallback(Landroidx/compose/runtime/MutableState;)V
+    .registers 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroidx/compose/runtime/MutableState<",
+            "Landroid/graphics/Bitmap;",
+            ">;)V"
+        }
+    .end annotation
+
+    if-eqz p0, :cond_done
+    invoke-static {}, Lcom/example/ui/screens/CameraScreenKt;->createManualEntryBitmap()Landroid/graphics/Bitmap;
+    move-result-object v0
+    invoke-interface {p0, v0}, Landroidx/compose/runtime/MutableState;->setValue(Ljava/lang/Object;)V
+    :cond_done
+    return-void
 .end method
