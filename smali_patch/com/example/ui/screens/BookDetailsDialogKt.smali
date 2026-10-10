@@ -29774,6 +29774,8 @@
     move/from16 v15, v36
 
     :goto_8
+    goto :cond_1a
+
     if-nez p0, :cond_1a
 
     const v0, -0xd95cb67
