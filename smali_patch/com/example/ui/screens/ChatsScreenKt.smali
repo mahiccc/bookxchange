@@ -6399,20 +6399,14 @@
     .line 1249
     invoke-static {v1}, Landroidx/compose/ui/unit/Dp;->constructor-impl(F)F
 
+    const/high16 v14, 0x42c00000    # 96.0f
+
+    invoke-static {v14}, Landroidx/compose/ui/unit/Dp;->constructor-impl(F)F
+
     move-result v14
 
-    const/4 v15, 0x7
-
-    const/16 v16, 0x0
-
-    const/4 v11, 0x0
-
-    const/4 v12, 0x0
-
-    const/4 v13, 0x0
-
     .line 364
-    invoke-static/range {v11 .. v16}, Landroidx/compose/foundation/layout/PaddingKt;->PaddingValues-a9UjIt4$default(FFFFILjava/lang/Object;)Landroidx/compose/foundation/layout/PaddingValues;
+    invoke-static {v11, v12, v13, v14}, Landroidx/compose/foundation/layout/PaddingKt;->PaddingValues-a9UjIt4(FFFF)Landroidx/compose/foundation/layout/PaddingValues;
 
     move-result-object v2
 
