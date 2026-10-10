@@ -1342,15 +1342,11 @@
 
     invoke-static {v0, v3}, Lcom/example/ui/screens/LoginScreenKt;->access$LoginScreen$lambda$2(Landroidx/compose/runtime/MutableState;Z)V
 
-    iget-object v0, v1, Lcom/example/ui/screens/LoginScreenKt$LoginScreen$triggerGoogleSignIn$1$1$1;->$onLoginSuccess:Lkotlin/jvm/functions/Function3;
+    const/4 v0, 0x0
 
-    const-string v2, "chindhulurushivasumukesh@gmail.com"
+    iget-object v2, v1, Lcom/example/ui/screens/LoginScreenKt$LoginScreen$triggerGoogleSignIn$1$1$1;->$onLoginSuccess:Lkotlin/jvm/functions/Function3;
 
-    const-string v3, "Shiva Sumukesh Chindhuluru"
-
-    const-string v4, ""
-
-    invoke-interface {v0, v2, v3, v4}, Lkotlin/jvm/functions/Function3;->invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-static {v0, v2}, Lcom/example/ui/AuthAccountHelper;->handleSignInFallback(Landroid/content/Intent;Lkotlin/jvm/functions/Function3;)V
 
     goto :goto_15
 
@@ -1361,15 +1357,11 @@
 
     invoke-static {v0, v3}, Lcom/example/ui/screens/LoginScreenKt;->access$LoginScreen$lambda$2(Landroidx/compose/runtime/MutableState;Z)V
 
-    iget-object v0, v1, Lcom/example/ui/screens/LoginScreenKt$LoginScreen$triggerGoogleSignIn$1$1$1;->$onLoginSuccess:Lkotlin/jvm/functions/Function3;
+    const/4 v0, 0x0
 
-    const-string v2, "chindhulurushivasumukesh@gmail.com"
+    iget-object v2, v1, Lcom/example/ui/screens/LoginScreenKt$LoginScreen$triggerGoogleSignIn$1$1$1;->$onLoginSuccess:Lkotlin/jvm/functions/Function3;
 
-    const-string v3, "Shiva Sumukesh Chindhuluru"
-
-    const-string v4, ""
-
-    invoke-interface {v0, v2, v3, v4}, Lkotlin/jvm/functions/Function3;->invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-static {v0, v2}, Lcom/example/ui/AuthAccountHelper;->handleSignInFallback(Landroid/content/Intent;Lkotlin/jvm/functions/Function3;)V
 
     .line 192
     :goto_15

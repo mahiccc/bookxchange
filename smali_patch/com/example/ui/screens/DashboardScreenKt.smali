@@ -5247,15 +5247,6 @@
     :goto_19
     if-eqz p5, :cond_3f
 
-    invoke-virtual {v1}, Lcom/example/data/Book;->getOwnerProfilePicUrl()Ljava/lang/String;
-
-    move-result-object v6
-
-    if-eqz v6, :cond_set_you
-
-    sput-object v6, Lcom/example/ui/screens/DashboardScreenKt;->cachedUserPhoto:Ljava/lang/String;
-
-    :cond_set_you
     const-string v22, "You"
 
     :cond_3f
@@ -58808,6 +58799,37 @@
 .method public static getEffectiveProfilePic(Lcom/example/data/User;Ljava/lang/String;)Ljava/lang/String;
     .registers 8
 
+    # 0. Check User object passed in
+    if-eqz p0, :cond_check_user_photo
+    invoke-virtual {p0}, Lcom/example/data/User;->getProfilePicUrl()Ljava/lang/String;
+    move-result-object v0
+    if-eqz v0, :cond_check_user_photo
+    invoke-virtual {v0}, Ljava/lang/String;->trim()Ljava/lang/String;
+    move-result-object v0
+    invoke-virtual {v0}, Ljava/lang/String;->isEmpty()Z
+    move-result v1
+    if-nez v1, :cond_check_user_photo
+    const-string v1, "ui-avatars"
+    invoke-virtual {v0, v1}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    move-result v1
+    if-nez v1, :cond_check_user_photo
+    return-object v0
+
+    :cond_check_user_photo
+    # 0b. Check String arg passed in
+    if-eqz p1, :cond_check_arg_photo
+    invoke-virtual {p1}, Ljava/lang/String;->trim()Ljava/lang/String;
+    move-result-object v0
+    invoke-virtual {v0}, Ljava/lang/String;->isEmpty()Z
+    move-result v1
+    if-nez v1, :cond_check_arg_photo
+    const-string v1, "ui-avatars"
+    invoke-virtual {v0, v1}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    move-result v1
+    if-nez v1, :cond_check_arg_photo
+    return-object v0
+
+    :cond_check_arg_photo
     # 1. Check cachedUserPhoto
     sget-object v0, Lcom/example/ui/screens/DashboardScreenKt;->cachedUserPhoto:Ljava/lang/String;
     if-eqz v0, :cond_check_sp
